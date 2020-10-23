@@ -15,7 +15,7 @@ class CreateProductPurchasingsTable extends Migration {
 	{
 		Schema::create('product_purchasings', function(Blueprint $table)
 		{
-			$table->bigInteger(''id'', true)->unsigned();
+			$table->bigInteger('id', true)->unsigned();
 			$table->integer('admin_id')->unsigned()->index('product_purchasing_admin_foreign');
 			$table->bigInteger('product_purchasing_detail_id')->unsigned()->index('product_purchasing_product_purchasing_detail_foreign');
 			$table->timestamps(10);

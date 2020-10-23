@@ -15,7 +15,7 @@ class CreateRegisterDevicesTable extends Migration {
 	{
 		Schema::create('register_devices', function(Blueprint $table)
 		{
-			$table->bigInteger(''id'', true)->unsigned();
+			$table->bigInteger('id', true)->unsigned();
 			$table->string('device_code');
 			$table->integer('admin_id')->unsigned()->index('register_devices_admin_id_foreign');
 			$table->timestamps(10);

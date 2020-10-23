@@ -15,7 +15,7 @@ class CreateNewsTable extends Migration {
 	{
 		Schema::create('news', function(Blueprint $table)
 		{
-			$table->bigInteger(''id'', true)->unsigned();
+			$table->bigInteger('id', true)->unsigned();
 			$table->string('title');
 			$table->text('body');
 			$table->timestamps(10);

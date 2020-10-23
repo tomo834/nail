@@ -51,11 +51,6 @@ class LoginController extends Controller
         return view('admin.auth.login');
     }
 
-    public function username()
-    {
-        return 'account_id';
-    }
-
     /**
      * Get the guard to be used during authentication.
      *
@@ -65,11 +60,4 @@ class LoginController extends Controller
     {
         return Auth::guard('admin');
     }
-
-    public function logout() {
-        // Auth::guard('admin')->logout();
-        $redirectTo = '/admin/login';
-    }
-
-    
 }

@@ -15,10 +15,10 @@ class CreateOauthClientsTable extends Migration {
 	{
 		Schema::create('oauth_clients', function(Blueprint $table)
 		{
-			$table->bigInteger(''id'', true)->unsigned();
+			$table->bigInteger('id', true)->unsigned();
 			$table->bigInteger('user_id')->unsigned()->nullable()->index();
 			$table->string('name');
-			$table->string(''secret'', 100)->nullable();
+			$table->string('secret', 100)->nullable();
 			$table->string('provider')->nullable();
 			$table->text('redirect');
 			$table->boolean('personal_access_client');

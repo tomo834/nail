@@ -15,7 +15,7 @@ class CreateNailDivisionsTable extends Migration {
 	{
 		Schema::create('nail_divisions', function(Blueprint $table)
 		{
-			$table->bigInteger(''id'', true)->unsigned();
+			$table->bigInteger('id', true)->unsigned();
 			$table->string('division');
 			$table->timestamps(10);
 		});

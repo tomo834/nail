@@ -9,7 +9,6 @@
 
                 <div class="panel-body">
                     You are logged in as Admin!
-                    {{ Auth::guard('admin')->user()->name }}
                 </div>
             </div>
         </div>

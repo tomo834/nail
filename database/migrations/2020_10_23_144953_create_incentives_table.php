@@ -15,7 +15,7 @@ class CreateIncentivesTable extends Migration {
 	{
 		Schema::create('incentives', function(Blueprint $table)
 		{
-			$table->bigInteger(''id'', true)->unsigned();
+			$table->bigInteger('id', true)->unsigned();
 			$table->integer('admin_id')->unsigned()->index('incentive_admin_foreign');
 			$table->bigInteger('sale_id')->unsigned()->index('incentive_sales_foreign');
 			$table->integer('incentive');

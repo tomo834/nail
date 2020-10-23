@@ -15,7 +15,7 @@ class CreateProductPurchasingDetailsTable extends Migration {
 	{
 		Schema::create('product_purchasing_details', function(Blueprint $table)
 		{
-			$table->bigInteger(''id'', true)->unsigned();
+			$table->bigInteger('id', true)->unsigned();
 			$table->bigInteger('product_id')->unsigned()->index('product_purchasing_details_product_foreign');
 			$table->integer('amount');
 			$table->integer('total');

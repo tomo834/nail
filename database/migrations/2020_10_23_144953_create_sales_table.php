@@ -15,7 +15,7 @@ class CreateSalesTable extends Migration {
 	{
 		Schema::create('sales', function(Blueprint $table)
 		{
-			$table->bigInteger(''id'', true)->unsigned();
+			$table->bigInteger('id', true)->unsigned();
 			$table->timestamps(10);
 			$table->bigInteger('sales_detail_id')->unsigned()->index('sales_sales_detail_id_foreign');
 			$table->bigInteger('user_id')->unsigned()->index('sales_user_id_foreign');

@@ -8,10 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Nailtron') }}</title>
+    <title>{{ config('app.name', 'Laravel Multi Auth Guard') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -21,53 +21,65 @@
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
-          <h2><a class="navbar-brand" href="{{ url('/admin') }}">Nailtron</a></h2>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+            <div class="navbar-header">
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                @if (Auth::guard('admin')->guest())
-                    <li class="pr-3"><a href="{{ url('/admin/login') }}">Login</a></li>
-                    <li class="pr-3"><a href="{{ url('/admin/register') }}">Register</a></li>
-                @else
-                    @if (Auth::guard('admin')->user()->type === "99")
-                        <li class="pr-3">{{ Auth::guard('admin')->user()->name }} : (運営)</li>
-                        <li class="pr-3"><a href="{{ url('admin/create') }}">代理店登録</a></li>
-                        <li class="pr-3"><a href="{{ url('admin/file-import-export') }}">代理店インポート</a></li>
-                        @elseif (Auth::guard('admin')->user()->type === "1")
-                        <li class="pr-3">{{ Auth::guard('admin')->user()->name }} : (代理店)</li>
-                        <li class="pr-3"><a href="{{ url('admin/create') }}">特約店登録</a></li>
-                        <li class="pr-3"><a href="{{ url('admin/file-import-export') }}">特約店インポート</a></li>
-                        @elseif (Auth::guard('admin')->user()->type === "2")
-                        <li class="pr-3">{{ Auth::guard('admin')->user()->name }} : (特約店)</li>
-                        <li class="pr-3"><a href="{{ url('admin/create') }}">加盟店登録</a></li>
-                        <li class="pr-3"><a href="{{ url('admin/file-import-export') }}">加盟店インポート</a></li>
-                        @elseif (Auth::guard('admin')->user()->type === "3")
-                        <li class="pr-3">{{ Auth::guard('admin')->user()->name }} : (加盟店)</li>
-                        <li class="pr-3"><a href="{{ url('admin/user/create') }}">ユーザー登録</a></li>
-                        <li class="pr-3"><a href="{{ url('/admin/device') }}">デバイス</a></li>
-                        <li class="pr-3"><a href="{{ url('/admin/product/purchase') }}">仕入れ</a></li>
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/admin') }}">
+                    {{ config('app.name', 'Laravel Multi Auth Guard') }}: Admin
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    &nbsp;
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li><a href="{{ url('/admin/login') }}">Login</a></li>
+                        <li><a href="{{ url('/admin/register') }}">Register</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/admin/logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
                     @endif
-                    <li class="pr-3"><a href="{{ url('admin/') }}">店舗一覧</a></li>
-                    <li class="pr-3"><a href="{{ url('admin/sales') }}">ネイル売上確認</a></li>
-                    @if (Auth::guard('admin')->user()->type !== "3")
-                    <li class="pr-3"><a href="{{ url('admin/product/sales') }}">製品売上確認</a></li>
-                    @endif
-                    <li class="pr-3"><a href="{{ url('/admin/logout') }}">Logout</a></li>
-                @endif
-            </ul>
-          </div>
-      </div>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     @yield('content')
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-
 </body>
 </html>

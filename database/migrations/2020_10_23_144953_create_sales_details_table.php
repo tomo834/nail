@@ -15,7 +15,7 @@ class CreateSalesDetailsTable extends Migration {
 	{
 		Schema::create('sales_details', function(Blueprint $table)
 		{
-			$table->bigInteger(''id'', true)->unsigned();
+			$table->bigInteger('id', true)->unsigned();
 			$table->bigInteger('nail_id')->unsigned()->index('sales_details_nail_foreign');
 			$table->integer('amount');
 			$table->integer('subtotal');

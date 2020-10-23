@@ -15,7 +15,7 @@ class CreateMemberRanksTable extends Migration {
 	{
 		Schema::create('member_ranks', function(Blueprint $table)
 		{
-			$table->bigInteger(''id'', true)->unsigned();
+			$table->bigInteger('id', true)->unsigned();
 			$table->string('rank');
 			$table->timestamps(10);
 		});

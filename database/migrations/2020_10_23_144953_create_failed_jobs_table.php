@@ -15,7 +15,7 @@ class CreateFailedJobsTable extends Migration {
 	{
 		Schema::create('failed_jobs', function(Blueprint $table)
 		{
-			$table->bigInteger(''id'', true)->unsigned();
+			$table->bigInteger('id', true)->unsigned();
 			$table->text('connection');
 			$table->text('queue');
 			$table->text('payload');

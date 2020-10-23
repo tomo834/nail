@@ -15,7 +15,7 @@ class CreateAdminSamplesTable extends Migration {
 	{
 		Schema::create('admin_samples', function(Blueprint $table)
 		{
-			$table->bigInteger(''id'', true)->unsigned();
+			$table->bigInteger('id', true)->unsigned();
 			$table->dateTime('request')->nullable();
 			$table->string('name');
 			$table->string('company_name')->nullable();

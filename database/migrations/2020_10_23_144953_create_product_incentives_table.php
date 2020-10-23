@@ -15,7 +15,7 @@ class CreateProductIncentivesTable extends Migration {
 	{
 		Schema::create('product_incentives', function(Blueprint $table)
 		{
-			$table->bigInteger(''id'', true)->unsigned();
+			$table->bigInteger('id', true)->unsigned();
 			$table->integer('admin_id')->unsigned()->index('product_incentive_admin_foreign');
 			$table->integer('incentive');
 			$table->dateTime('receive');
