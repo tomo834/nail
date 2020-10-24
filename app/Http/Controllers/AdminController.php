@@ -90,7 +90,7 @@ class AdminController extends Controller
             $account_id_left = substr($admin->account_id, 0, 5);
             $account_id_right = str_pad(strval($under + 1), 5, "0", STR_PAD_LEFT);
             $account_id = $account_id_left . $account_id_right;
-            $type = "3"
+            $type = "3";
         }
         $new_admin = new Admin();
         $new_admin->name = $request->name;
