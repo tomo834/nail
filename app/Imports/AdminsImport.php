@@ -26,9 +26,9 @@ class AdminsImport implements ToCollection, WithStartRow
         Log::debug($rows->toArray());
 
         Validator::make($rows->toArray(), [
-            "1" => "required",
-            "10" => "required|email|unique:admins",
-            "24" => "required|integer"
+            "*.1" => "required",
+            "*.10" => "required|email|unique:admins",
+            "*.24" => "required|integer"
         ])->validate();
 
 
