@@ -18,11 +18,12 @@ class PurchaseController extends Controller
     public function index(){
     	$orders = ProductPurchasing::where("admin_id", Auth::guard('admin')->user()->id)->count();
     	$account_id = Auth::guard('admin')->user()->account_id;
-    	$order = str_pad(strval($orders + 1), 4, "8", STR_PAD_LEFT);
+    	$admin_id = Auth::guard('admin')->user()->id;
+    	$order = str_pad(strval($orders + 1), 3, "9", STR_PAD_LEFT);
     	$order_id = $account_id . "-" . $order;
     	$gadget_price = Product::find(1)->price;
     	$gel_price = Product::find(2)->price;
-    	return view('administor/product/purchase', compact('order_id', 'gadget_price', 'gel_price'));
+    	return view('administor/product/purchase', compact('order_id', 'gadget_price', 'gel_price', 'admin_id'));
     }
 
     public function receive(Request $request){
@@ -68,6 +69,10 @@ class PurchaseController extends Controller
 	    	$client_field1 = $client_field1[1];
 	    	$client_field1 = explode("-", $client_field1);
 
+	    	$admin = $response[8];
+	    	$admin = explode("=", $admin);
+	    	$admin = $admin[1];
+
 	    	$device = explode("device", $client_field1[0]);
 	    	$device_amount = $device[0];
 	    	$device_total = $device[1];
@@ -91,15 +96,15 @@ class PurchaseController extends Controller
     		$p_deatil_c->save();
 
     		$p_d = new ProductPurchasing();
-    		$p_d->admin_id = Auth::guard('admin')->user()->id;
-    		$p_d->product_purchasing_id = $p_deatil_d;
+    		$p_d->admin_id = $admin;
+    		$p_d->product_purchasing_id = $p_deatil_d->id;
     		$p_d->product_purchasing_division_id = "TRADING";
     		$p_d->order_id = $order_id;
     		$p_d->save();
 
     		$p_c = new ProductPurchasing();
-    		$p_c->admin_id = Auth::guard('admin')->user()->id;
-    		$p_c->product_purchasing_id = $p_deatil_c;
+    		$p_c->admin_id = $admin;
+    		$p_c->product_purchasing_id = $p_deatil_c->id;
     		$p_c->product_purchasing_division_id = "TRADING";
     		$p_c->order_id = $order_id;
     		$p_c->save();
