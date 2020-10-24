@@ -81,6 +81,14 @@
                 </table>
             </div>
 
+            @if (Auth::guard('admin')->user()->type === "99")
+                <p>追加できるのは代理店のみです。特約店は代理店、加盟店は特約店からのみ登録できます。</p>
+            @elseif (Auth::guard('admin')->user()->type === "1")
+                <p>追加できるのは特約店のみです。加盟店は特約店からのみ追加できます。</p>
+            @elseif (Auth::guard('admin')->user()->type === "2")
+                <p>追加できるのは加盟店のみです。</p>
+            @endif
+
             <form action="{{ url('admin/file-import') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group mb-4" style="max-width: 500px; margin: 0 auto;">
