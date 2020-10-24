@@ -89,23 +89,23 @@ class AdminController extends Controller
             $account_id_right = str_pad(strval($under + 1), 5, "0", STR_PAD_LEFT);
             $account_id = $account_id_left . $account_id_right;
         }
-        // $new_admin = new Admin;
-        // $new_admin->name = $request->name;
-        // $new_admin->email = $request->email;
-        // $new_admin->type = $type;
-        // $p = str_random(12);
+        $new_admin = new Admin();
+        $new_admin->name = $request->name;
+        $new_admin->email = $request->email;
+        $new_admin->type = $type;
+        $p = str_random(12);
         Log::debug($under);
         Log::debug($account_id);
-        // $new_admin->password = Hash::make($p);
-        // $new_admin->save();
+        $new_admin->password = Hash::make($p);
+        $new_admin->save();
 
-        // 
+        
 
-        // $rootTree = Node::where("shop", $admin->id)->first();
-        // $childTree = new Node();
-        // $childTree->shop = $new_admin->id;
-        // $rootTree->addChild($childTree);
-        // $childTree->save();
+        $rootTree = Node::where("shop", $admin->id)->first();
+        $childTree = new Node();
+        $childTree->shop = $new_admin->id;
+        $rootTree->addChild($childTree);
+        $childTree->save();
 
         
 
