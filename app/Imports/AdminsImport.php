@@ -37,7 +37,7 @@ class AdminsImport implements ToCollection, WithStartRow
 
         foreach ($rows as $row) 
         {
-            Log::debug($row)
+            Log::debug($row);
 
             $row = $row->toArray();
     
