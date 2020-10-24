@@ -62,6 +62,9 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function store(Request $request)
     {
         $admin = Auth::guard('admin')->user();
@@ -92,6 +95,13 @@ class AdminController extends Controller
             $account_id = $account_id_left . $account_id_right;
             $type = "3";
         }
+
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:admins',
+        ])
+
+
         $new_admin = new Admin();
         $new_admin->name = $request->name;
         $new_admin->email = $request->email;
