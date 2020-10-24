@@ -40,7 +40,8 @@ class AdminsImport implements ToCollection, WithStartRow
 
             $row = $row->toArray();
             
-            Log::debug($row[0]);
+            Log::debug(gettype($row[0]));
+            Log::debug(gettype($row[31]));
             Log::debug($row[31]);
 
             $data = [
