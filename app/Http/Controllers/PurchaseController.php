@@ -35,12 +35,10 @@ class PurchaseController extends Controller
 
 		$data = http_build_query($data, "", "&");
 
-    	curl_setopt($ch, [
-    		CURLOPT_URL => $url,
-    		CURLOPT_RETURNTRANSFER => true,
-    		CURLOPT_POST => true,
-    		CURLOPT_POSTFIELDS => $data,
-    	]);
+    	curl_setopt($ch, CURLOPT_URL, $url);
+	    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+	    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
     	$response = curl_exec($ch);
     	Log::debug($response);
