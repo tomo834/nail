@@ -68,6 +68,7 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-
+    <script src="/js/jquery.md5.js"></script>
+    @yield('javascript-footer')
 </body>
 </html>
