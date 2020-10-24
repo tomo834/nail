@@ -47,7 +47,7 @@ class AdminsImport implements ToCollection, WithStartRow
                 "incentive" => $row[24],
             ];
             $conditions = [
-                "request" => "date"
+                "request" => "date",
                 "name" => "required",
                 "email" => "required|email|unique:admins",
                 "incentive" => "required|integer"
