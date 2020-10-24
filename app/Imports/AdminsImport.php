@@ -11,9 +11,10 @@ use App\Node;
 use App\NodeClosure;
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Validator; 
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
 
-class AdminsImport implements ToCollection
+class AdminsImport implements ToCollection, WithStartRow
 {
     /**
     * @param array $row
