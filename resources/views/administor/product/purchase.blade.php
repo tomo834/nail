@@ -5,7 +5,6 @@
     <div class="row">
     	<div class="col-12">
 		<h2>仕入れ</h2>
-<p>{{ $order_id }}</p>
 		<table class="table">
 			<tr>
 				<th class="table__col">製品</th>
@@ -75,7 +74,6 @@
 				width: 25%;
 			}
 		</style>
-		<script src="{{ asset('js/app.js') }}"></script>
 		<script src="{{ asset('js/jquery.md5.js') }}"></script>
 		<script language="javascript" type="text/javascript">
 			function getStringFromDate(date) {
