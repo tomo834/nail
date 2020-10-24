@@ -96,6 +96,7 @@
                         {{ $error }}
                     @endforeach
                 </div>
+            @endif
 
             <form action="{{ url('admin/file-import') }}" method="POST" enctype="multipart/form-data">
                 @csrf
