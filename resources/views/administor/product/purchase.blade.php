@@ -161,7 +161,6 @@
 
 		     $('#myButton').click(function(){
 		      $('#client_field1').val("device" + $('#gadget_amount').val() + "-coat" + $('#gel_amount').val());
-		      console.log($('#client_field1').val())
 		      var shop = $('#myshop').val();
 		      var order = $('#myorder').val();
 		      var gadget = $('#gadget_amount').val();
@@ -173,6 +172,7 @@
 		      var gad_total = $("#confirm_gad_total").val()
 		      var gel_total = $("#confirm_gel_total").val()
 		      $("#client_field1").val(gad_amount + "device" +gad_total + "-" + gel_amount + "coat" + gel_total);
+		      console.log($('#client_field1').val())
 		      var now = new Date();
 		      var password = "6ftzw5gc";
 		      var date = getStringFromDate(now);
@@ -180,7 +180,7 @@
 		      var info = $.md5(shop + "|" + order + "|" + amount + "||" + password + "|" +date);
 		      $('#myinfo').val(info);
 		      console.log(shop + "|" + order + "|" + amount + "||" + password + "|" +date);
-		      // $('#myform').submit();
+		      $('#myform').submit();
 		     });
 		    });  
 		  </script>
