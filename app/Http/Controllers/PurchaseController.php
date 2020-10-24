@@ -37,7 +37,6 @@ class PurchaseController extends Controller
 
     	Log::debug($order_id);
 
-    	return 0;
 
     	$url = "https://pt01.mul-pay.jp/payment/SearchTradeMulti.idPass";
     	$ch = curl_init();
