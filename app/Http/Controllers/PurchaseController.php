@@ -18,7 +18,7 @@ class PurchaseController extends Controller
     public function index(){
     	$orders = ProductPurchasing::where("admin_id", Auth::guard('admin')->user()->id)->count();
     	$account_id = Auth::guard('admin')->user()->account_id;
-    	$order = str_pad(strval($orders + 1), 4, "9", STR_PAD_LEFT);
+    	$order = str_pad(strval($orders + 1), 4, "8", STR_PAD_LEFT);
     	$order_id = $account_id . "-" . $order;
     	$gadget_price = Product::find(1)->price;
     	$gel_price = Product::find(2)->price;
@@ -27,16 +27,8 @@ class PurchaseController extends Controller
 
     public function receive(Request $request){
 
-    	Log::debug($request);
-
-    	Log::debug("RECEIVE");
-
-
 
     	$order_id = $request->input('OrderID');
-
-    	Log::debug($order_id);
-
 
     	$url = "https://pt01.mul-pay.jp/payment/SearchTradeMulti.idPass";
     	$ch = curl_init();
@@ -76,11 +68,11 @@ class PurchaseController extends Controller
 	    	$client_field1 = $client_field1[1];
 	    	$client_field1 = explode("-", $client_field1);
 
-	    	$device = explode("device", $client_field[0]);
+	    	$device = explode("device", $client_field1[0]);
 	    	$device_amount = $device[0];
 	    	$device_total = $device[1];
 
-	    	$coat = explode("coat",  $client_field[1]);
+	    	$coat = explode("coat",  $client_field1[1]);
 	    	$coat_amount = $coat[0];
 	    	$coat_total = $coat[1];
 
@@ -102,14 +94,14 @@ class PurchaseController extends Controller
     		$p_d->admin_id = Auth::guard('admin')->user()->id;
     		$p_d->product_purchasing_id = $p_deatil_d;
     		$p_d->product_purchasing_division_id = "TRADING";
-    		$p_d->order_id = $client_field2;
+    		$p_d->order_id = $order_id;
     		$p_d->save();
 
     		$p_c = new ProductPurchasing();
     		$p_c->admin_id = Auth::guard('admin')->user()->id;
     		$p_c->product_purchasing_id = $p_deatil_c;
     		$p_c->product_purchasing_division_id = "TRADING";
-    		$p_c->order_id = $client_field2;
+    		$p_c->order_id = $order_id;
     		$p_c->save();
 
     	}else if($status == "TRANSFERRED"){
