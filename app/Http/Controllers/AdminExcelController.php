@@ -26,7 +26,7 @@ class AdminExcelController extends Controller
     	$request->validate([
             'file' => 'required'
         ]);
-        Excel::import(new AdminsImport, request()->file('file'));
+        Excel::import(new AdminsImport, request()->file('file')->ignoreEmpty());
         
 
         return back();
