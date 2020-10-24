@@ -150,10 +150,10 @@ class AdminsImport implements ToCollection
             $childTree->save();
         }
 
-        public function startRow(): int
-        {
-            return 2;
-        }
+    }
 
+    public function startRow(): int
+    {
+        return 2;
     }
 }

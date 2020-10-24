@@ -103,7 +103,7 @@
                 <div class="form-group mb-4" style="max-width: 500px; margin: 0 auto;">
                     <div class="custom-file text-left">
                         <input type="file" name="file" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
+                        <label class="custom-file-label" for="customFile" id="cutomLabel">Choose file</label>
                     </div>
                 </div>
                 <button class="btn btn-primary">代理店追加</button>
@@ -115,3 +115,13 @@
 @endsection
 
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#customFile").on("change",function(){
+            var f_name = $('#customFile').prop('files')[0].name;
+            $('#cutomLabel').text(f_name);
+        })
+    })
+</script>
+
+
