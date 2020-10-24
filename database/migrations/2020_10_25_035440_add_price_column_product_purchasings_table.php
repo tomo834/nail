@@ -26,7 +26,7 @@ class AddPriceColumnProductPurchasingsTable extends Migration
     public function down()
     {
         Schema::table('product_purchasings', function (Blueprint $table) {
-            $table->dropColumn('amount');
+            $table->dropColumn('price');
         });
     }
 }
