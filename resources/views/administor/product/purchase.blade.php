@@ -167,10 +167,10 @@
 		      var gel = $('#gel_amount').val();
 		      $("#myamount").val($("#sum_price").text());
 		      var amount = $('#myamount').val();
-		      var gad_amount = $("#confirm_gad_amount").val()
-		      var gel_amount = $("#confirm_gel_amount").val()
-		      var gad_total = $("#confirm_gad_total").val()
-		      var gel_total = $("#confirm_gel_total").val()
+		      var gad_amount = $("#confirm_gad_amount").text()
+		      var gel_amount = $("#confirm_gel_amount").text()
+		      var gad_total = $("#confirm_gad_total").text()
+		      var gel_total = $("#confirm_gel_total").text()
 		      $("#client_field1").val(gad_amount + "device" +gad_total + "-" + gel_amount + "coat" + gel_total);
 		      console.log($('#client_field1').val())
 		      var now = new Date();
