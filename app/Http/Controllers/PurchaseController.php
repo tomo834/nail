@@ -25,7 +25,10 @@ class PurchaseController extends Controller
     	return view('administor/product/purchase', compact('order_id', 'gadget_price', 'gel_price'));
     }
 
-    public function receive(){
+    public function receive(Request $request){
+
+    	$order_id = $request->input('OrderID');
+
     	$url = "https://pt01.mul-pay.jp/payment/SearchTradeMulti.idPass";
     	$ch = curl_init();
 
@@ -33,7 +36,7 @@ class PurchaseController extends Controller
 
 		$data['ShopID'] = 'tshop00046988';
 		$data['ShopPass'] = '6ftzw5gc';
-		$data['OrderID'] = '1891817118';
+		$data['OrderID'] = $order_id;
 		$data['PayType'] = '23';
 
 		$data = http_build_query($data, "", "&");
@@ -60,10 +63,6 @@ class PurchaseController extends Controller
 	    	$client_field1 = explode("=", $client_field1);
 	    	$client_field1 = $client_field1[1];
 	    	$client_field1 = explode("-", $client_field1);
-
-	    	$client_field2 = $response[6];
-	    	$client_field2 = explode("=", $client_field2);
-	    	$client_field2 = $client_field2[1];
 
 	    	$device = explode("device", $client_field[0]);
 	    	$device_amount = $device[0];
