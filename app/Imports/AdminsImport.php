@@ -41,11 +41,13 @@ class AdminsImport implements ToCollection, WithStartRow
             $row = $row->toArray();
 
             $data = [
+                "request" => $row[0],
                 "name" => $row[1],
                 "email" => $row[10],
                 "incentive" => $row[24],
             ];
             $conditions = [
+                "request" => "date"
                 "name" => "required",
                 "email" => "required|email|unique:admins",
                 "incentive" => "required|integer"
@@ -138,15 +140,6 @@ class AdminsImport implements ToCollection, WithStartRow
                 'other' => $other,
                 'mailing_date' => $mailing_date,
                 'account_id' => $a,
-                'type' => $t,
-                'password' => Hash::make($p)
-            ]);
-
-
-            $p = str_random(12);
-            $admin = Admin::create([
-                'name' => $row[0],
-                'email' => $row[1],
                 'type' => $t,
                 'password' => Hash::make($p)
             ]);
