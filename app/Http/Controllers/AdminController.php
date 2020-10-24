@@ -99,7 +99,7 @@ class AdminController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:admins',
-        ])
+        ]);
 
 
         $new_admin = new Admin();
