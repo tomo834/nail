@@ -78,7 +78,7 @@
 	</div>
 </div>
 @endsection
-<script src="/js/purchase.js"></script>
 @section("javascript-footer")
+<script src="/js/purchase.js"></script>
 
 @endsection
