@@ -6,6 +6,15 @@
         <div class="col-12">
             <h2 class="mb-4">店舗インポート</h2>
             <p>Excelフォーマット</p>
+
+
+            @if (Auth::guard('admin')->user()->type === "99")
+                <p>※追加できるのは代理店のみです。特約店は代理店、加盟店は特約店からのみ登録できます。</p>
+            @elseif (Auth::guard('admin')->user()->type === "1")
+                <p>※追加できるのは特約店のみです。加盟店は特約店からのみ追加できます。</p>
+            @elseif (Auth::guard('admin')->user()->type === "2")
+                <p>※追加できるのは加盟店のみです。</p>
+            @endif
             <div class=" table-responsible">
                 <table class="table text-nowrap table-bordered">
                     <tr>
@@ -69,7 +78,7 @@
                         <td>文字列</td>
                         <td>文字列</td>
                         <td>文字列</td>
-                        <td class="text-danger">数字</td>
+                        <td class="text-danger">必須 数字</td>
                         <td>○もしくは空欄</td>
                         <td>○もしくは空欄</td>
                         <td>○もしくは空欄</td>
@@ -81,13 +90,12 @@
                 </table>
             </div>
 
-            @if (Auth::guard('admin')->user()->type === "99")
-                <p>追加できるのは代理店のみです。特約店は代理店、加盟店は特約店からのみ登録できます。</p>
-            @elseif (Auth::guard('admin')->user()->type === "1")
-                <p>追加できるのは特約店のみです。加盟店は特約店からのみ追加できます。</p>
-            @elseif (Auth::guard('admin')->user()->type === "2")
-                <p>追加できるのは加盟店のみです。</p>
-            @endif
+            @if (isset($errors) && $errors->any())
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
+                </div>
 
             <form action="{{ url('admin/file-import') }}" method="POST" enctype="multipart/form-data">
                 @csrf
