@@ -8,6 +8,9 @@ use App\Node;
 use App\NodeClosure;
 use Illuminate\Support\Facades\Auth;
 use App\ProductPurchasing;
+use App\Product;
+use App\ProductIncentive;
+use App\ProductPurchasingDetail;
 use Illuminate\Support\Facades\Log;
 
 class PurchaseController extends Controller
@@ -17,8 +20,8 @@ class PurchaseController extends Controller
     	$account_id = Auth::guard('admin')->user()->account_id;
     	$order = str_pad(strval($orders + 1), 4, "0", STR_PAD_LEFT);
     	$order_id = $account_id . "-" . $order;
-    	$gadget_price = 200;
-    	$gel_price = 100;
+    	$gadget_price = Product::find(1)->price;
+    	$gel_price = Product::find(2)->price;
     	return view('administor/product/purchase', compact('order_id', 'gadget_price', 'gel_price'));
     }
 
@@ -47,23 +50,70 @@ class PurchaseController extends Controller
     	$status = explode("=", $status);
     	$status = $status[1];
 
-    	$client_field = $response[6];
-    	$client_field = explode("=", $client_field);
-    	$client_field = $client_field[1];
-    	$client_field = explode("-", $client_field);
+    	if ($status == "TRADING"){
 
-    	$device = str_replace("device", "", $client_field[0]);
-    	$coat = str_replace("coat", "", $client_field[1]);
+    		$amount = $response[0];
+	    	$amount = explode("=", $amount);
+	    	$amount = $amount[1];
 
-    	Log::debug($response);
-    	Log::debug($status);
-    	Log::debug($client_field);
-    	Log::debug($device);
-    	Log::debug($coat);
+	    	$client_field1 = $response[6];
+	    	$client_field1 = explode("=", $client_field1);
+	    	$client_field1 = $client_field1[1];
+	    	$client_field1 = explode("-", $client_field1);
+
+	    	$client_field2 = $response[6];
+	    	$client_field2 = explode("=", $client_field2);
+	    	$client_field2 = $client_field2[1];
+
+	    	$device = explode("device", $client_field[0]);
+	    	$device_amount = $device[0];
+	    	$device_total = $device[1];
+
+	    	$coat = explode("coat",  $client_field[1]);
+	    	$coat_amount = $coat[0];
+	    	$coat_total = $coat[1];
+
+    		$p_deatil_d = new ProductPurchasingDetail();
+    		$p_deatil_d->product_id = "1";
+    		$p_deatil_d->amount = $device_amount;
+    		$p_deatil_d->total = $device_total;
+    		$p_deatil_d->purchase = date("Y-m-d H:i:s");
+    		$p_deatil_d->save();
+
+    		$p_deatil_c = new ProductPurchasingDetail();
+    		$p_deatil_c->product_id = "2";
+    		$p_deatil_c->amount = $coat_amount;
+    		$p_deatil_c->total = $coat_total;
+    		$p_deatil_c->purchase = date("Y-m-d H:i:s");
+    		$p_deatil_c->save();
+
+    		$p_d = new ProductPurchasing();
+    		$p_d->admin_id = Auth::guard('admin')->user()->id;
+    		$p_d->product_purchasing_id = $p_deatil_d;
+    		$p_d->product_purchasing_division_id = "TRADING";
+    		$p_d->order_id = $client_field2;
+    		$p_d->save();
+
+    		$p_c = new ProductPurchasing();
+    		$p_c->admin_id = Auth::guard('admin')->user()->id;
+    		$p_c->product_purchasing_id = $p_deatil_c;
+    		$p_c->product_purchasing_division_id = "TRADING";
+    		$p_c->order_id = $client_field2;
+    		$p_c->save();
+
+    	}else if($status == "TRANSFERRED"){
+    		// $products = ProductPurchasing::where('order_id', $client_field2)->get();
+    		// foreach ($products as $product) { 
+    		// 	$p = ProductPurchasing::find($product)
+    		// }
+
+    	}else if($status == "EXPIRED"){
+
+    	}
 
     	curl_close($ch);
 
-    	return view('administor/device');
+    	return 0;
 
     }
 }

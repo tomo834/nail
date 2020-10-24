@@ -59,6 +59,7 @@
 				 <input type="hidden" name="VaTradeDays" value="7">
 				 <input type="hidden" name="VaTradeClientMailAddress" value="stomo834@gmail.com">
 				 <input type="hidden" name="ClientField1" id="client_field1" value="device2-coat3">
+				 <input type="hidden" name="ClientField2" id="client_field2" value="{{ $order_id }}">
 				 <button type="button" class="btn" data-dismiss="modal">キャンセル</button>
 				 <button type="button" class="btn" id="myButton">購入</button>
 				</form>
@@ -167,6 +168,11 @@
 		      var gel = $('#gel_amount').val();
 		      $("#myamount").val($("#sum_price").text());
 		      var amount = $('#myamount').val();
+		      var gad_amount = $("#confirm_gad_amount").val()
+		      var gel_amount = $("#confirm_gel_amount").val()
+		      var gad_total = $("#confirm_gad_total").val()
+		      var gel_total = $("#confirm_gel_total").val()
+		      $("#client_field1").val(gad_amount + "device" +gad_total + "-" + gel_amount + "coat" + gel_total);
 		      var now = new Date();
 		      var password = "6ftzw5gc";
 		      var date = getStringFromDate(now);
