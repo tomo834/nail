@@ -21,9 +21,9 @@ class AdminsImport implements ToCollection
     * @return \Illuminate\Database\Eloquent\Model|null
     */
     public function collection(Collection $rows)
-    {;
+    {
         Log::debug($rows->toArray());
-        
+
         Validator::make($rows->toArray(), [
             "1" => "required",
             "10" => "required|email|unique:admins",
@@ -31,7 +31,7 @@ class AdminsImport implements ToCollection
         ])->validate();
 
 
-        $admins = Auth::guard('admin')->user()->id
+        $admins = Auth::guard('admin')->user()->id;
 
         if (Auth::guard('admin')->user()->type == "99") {
             $t = "1";
