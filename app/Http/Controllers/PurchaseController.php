@@ -26,11 +26,20 @@ class PurchaseController extends Controller
     	$url = "https://pt01.mul-pay.jp/payment/SearchTradeMulti.idPass";
     	$ch = curl_init();
 
+    	$data = [];
+
+		$data['ShopID'] = 'tshop00046988';
+		$data['ShopPass'] = '6ftzw5gc';
+		$data['OrderID'] = '1891817118';
+		$data['PayType'] = '23';
+
+		$data = http_build_query($data, "", "&");
+
     	curl_setopt($ch, [
     		CURLOPT_URL => $url,
     		CURLOPT_RETURNTRANSFER => true,
     		CURLOPT_POST => true,
-    		CURLOPT_POSTFIELDS => http_build_query(['ShopID'=>"tshop00046988", 'ShopPass'=>"6ftzw5gc",'OrderID'=>"1891817118","PayType"=>"23"]),
+    		CURLOPT_POSTFIELDS => http_build_query($data),
     	]);
 
     	$response = curl_exec($ch);
