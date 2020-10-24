@@ -41,7 +41,26 @@ class PurchaseController extends Controller
 	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
     	$response = curl_exec($ch);
+    	$response = explode("&", $response);
+
+    	$status = $response[0];
+    	$status = explode("=", $status);
+    	$status = $status[1];
+
+    	$client_field = $response[6];
+    	$client_field = explode("=", $client_field);
+    	$client_field = $client_field[1];
+    	$client_field = explode("-", $client_field);
+
+    	$device = str_replace("device", "", $client_field[0]);
+    	$coat = str_replace("coat", "", $client_field[1]);
+
     	Log::debug($response);
+    	Log::debug($status);
+    	Log::debug($client_field);
+    	Log::debug($device);
+    	Log::debug($coat);
+
     	curl_close($ch);
 
     	return view('administor/device');
