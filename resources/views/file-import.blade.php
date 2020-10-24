@@ -112,8 +112,17 @@
                         <label class="custom-file-label" for="customFile" id="cutomLabel">Choose file</label>
                     </div>
                 </div>
-                <button class="btn btn-primary">代理店追加</button>
-                <a class="btn btn-success" href="{{ url('admin/file-export') }}">サンプルダウンロード</a>
+                <div class="d-flex justify-content-center">
+                    @if (Auth::guard('admin')->user()->type === "99")
+                        <button class="btn btn-primary">代理店追加</button>
+                    @elseif (Auth::guard('admin')->user()->type === "1")
+                        <button class="btn btn-primary">特約店追加</button>
+                    @elseif (Auth::guard('admin')->user()->type === "2")
+                        <button class="btn btn-primary">加盟店追加</button>
+                    @endif
+                    
+                    <a class="btn btn-success" href="{{ url('admin/file-export') }}">サンプルダウンロード</a>
+                </div>
             </form>
         </div>
     </div>

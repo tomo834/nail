@@ -159,7 +159,7 @@
 							<td>{{ $agency->admin_info->incentive }}%</td>
 							<td>{{ $agency->admin_info->need_file }}</td>
 							<td>{{ $agency->admin_info->historical_matters }}</td>
-							<td>{{ $agency->admin_info->seal_certficate }}</td>
+							<td>{{ $agency->admin_info->seal_certificate }}</td>
 							<td>{{ $agency->admin_info->passbook }}</td>
 							<td>{{ $agency->admin_info->residents_card }}</td>
 							<td>{{ $agency->admin_info->other }}</td>

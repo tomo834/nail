@@ -8,6 +8,7 @@ use App\Node;
 use App\NodeClosure;
 use Illuminate\Support\Facades\Auth;
 use App\ProductPurchasing;
+use Illuminate\Support\Facades\Log;
 
 class PurchaseController extends Controller
 {
@@ -19,5 +20,26 @@ class PurchaseController extends Controller
     	$gadget_price = 200;
     	$gel_price = 100;
     	return view('administor/product/purchase', compact('order_id', 'gadget_price', 'gel_price'));
+    }
+
+    public function receive(){
+    	$url = "https://pt01.mul-pay.jp/payment/SearchTradeMulti.idPass";
+    	$ch = curl_init();
+
+    	$post_data = array('ShopID'=>"tshop00046988", 'ShopPass'=>"6ftzw5gc",'OrderID'=>"1891817118","PayType"=>"23");
+
+    	curl_setopt($ch, [
+    		CURLOPT_URL => $url,
+    		CURLOPT_RETURNTRANSFER => true,
+    		CURLOPT_POST => true,
+    		CURLOPT_POSTFIELDS => http_build_query($post_data),
+    	]);
+
+    	$response = curl_exec($ch);
+    	Log::debug($response);
+    	curl_close($ch);
+
+    	return view('administor/device');
+
     }
 }
