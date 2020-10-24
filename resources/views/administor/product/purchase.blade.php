@@ -75,7 +75,7 @@
 			}
 		</style>
 		<script src="{{ asset('js/app.js') }}"></script>
-		<script src="{{ asset('js/jquery.md5.js') }}"></script>
+		<script src="{{ mix('js/jquery.md5.js') }}"></script>
 		<script language="javascript" type="text/javascript">
 			function getStringFromDate(date) {
 			 
@@ -122,9 +122,6 @@
 			    $("#confirm_total").text(total);
 		  	}
 		    $(function(){
-
-		    
-
 			 $('#gadget_amount').on('input',function(){
 			 	var gad_amount = $('#gadget_amount').val();
 			 	if ($.isNumeric(gad_amount)){
