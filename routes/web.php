@@ -100,7 +100,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('device', "DeviceController");
 
     Route::get('product/purchase', "PurchaseController@index")->name('purchase');
-    Route::get('product/receive', "PurchaseController@receive")->name('receive');
+    Route::post('product/receive', "PurchaseController@receive")->name('receive');
     Route::get('product/sales', "ProductSaleController@sales");
 
     //excel

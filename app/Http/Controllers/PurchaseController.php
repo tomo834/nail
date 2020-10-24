@@ -18,7 +18,7 @@ class PurchaseController extends Controller
     public function index(){
     	$orders = ProductPurchasing::where("admin_id", Auth::guard('admin')->user()->id)->count();
     	$account_id = Auth::guard('admin')->user()->account_id;
-    	$order = str_pad(strval($orders + 1), 4, "2", STR_PAD_LEFT);
+    	$order = str_pad(strval($orders + 1), 4, "3", STR_PAD_LEFT);
     	$order_id = $account_id . "-" . $order;
     	$gadget_price = Product::find(1)->price;
     	$gel_price = Product::find(2)->price;
