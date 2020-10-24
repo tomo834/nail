@@ -72,6 +72,7 @@ class AdminController extends Controller
             $admins = Admin::all();
             $account_id = str_pad(strval($under + 1), 3, "0", STR_PAD_LEFT);
             $account_id = str_pad($account_id, 10, "0", STR_PAD_RIGHT);
+            $type = "1";
         }
         //agency
         else if ($admin->type == "1"){
@@ -80,6 +81,7 @@ class AdminController extends Controller
             $account_id_right = str_pad(strval($under + 1), 2, "0", STR_PAD_LEFT);
             $account_id_right = str_pad($account_id_right, 7, "0", STR_PAD_RIGHT);
             $account_id = $account_id_left . $account_id_right;
+            $type = "2";
         }
         //distributor
         else if ($admin->type == "2"){
@@ -88,11 +90,13 @@ class AdminController extends Controller
             $account_id_left = substr($admin->account_id, 0, 5);
             $account_id_right = str_pad(strval($under + 1), 5, "0", STR_PAD_LEFT);
             $account_id = $account_id_left . $account_id_right;
+            $type = "3"
         }
         $new_admin = new Admin();
         $new_admin->name = $request->name;
         $new_admin->email = $request->email;
         $new_admin->type = $type;
+        $new_admin->account_id = $account_id;
         $p = str_random(12);
         Log::debug($under);
         Log::debug($account_id);
