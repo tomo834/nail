@@ -74,7 +74,7 @@
 				width: 25%;
 			}
 		</style>
-		<script src="{{ asset('js/app.js') }}"></script>
+		<script src="{{ mix('js/app.js') }}"></script>
 		<script src="{{ mix('js/jquery.md5.js') }}"></script>
 		<script language="javascript" type="text/javascript">
 			function getStringFromDate(date) {
