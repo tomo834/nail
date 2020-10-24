@@ -31,7 +31,6 @@ class SalesController extends Controller
     	$admins = Node::find(45)->getDescendants()->pluck('shop');
 
     	$incentives = Admin::query()->whereIn("id", ["160","161"])->get();
-    	Log::debug($incentives);
 
     	// $incentives = Admin::find(160)->incentive_info;
 
@@ -77,6 +76,9 @@ class SalesController extends Controller
     	else if ($admin->type == "3"){
     		$incentives = Admin::find($admin->id)->incentive_info;
     	}
+
+        Log::debug($admin);
+        Log::debug($incentives);
 
     	return view('administor/sales', compact('incentives'));
     }
