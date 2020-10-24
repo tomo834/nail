@@ -29,7 +29,7 @@ class AdminExcelController extends Controller
         Excel::import(new AdminsImport, request()->file('file'));
         
 
-        return back();
+        return back()->withStatus('インポートが完了しました。');
     }
     
 
