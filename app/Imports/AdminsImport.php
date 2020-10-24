@@ -42,18 +42,14 @@ class AdminsImport implements ToCollection, WithStartRow
     
 
             $data = [
-                "request" => $row[0],
                 "name" => $row[1],
                 "email" => $row[10],
                 "incentive" => $row[24],
-                "mailing_date" => $row[31],
             ];
             $conditions = [
-                "request" => "date",
                 "name" => "required",
                 "email" => "required|email|unique:admins",
                 "incentive" => "required|integer",
-                "mailing_date" => "date",
             ];
             
             Validator::make($data, $conditions)->validate();
