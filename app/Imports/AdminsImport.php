@@ -40,6 +40,27 @@ class AdminsImport implements ToCollection, WithStartRow
 
             $row = $row->toArray();
     
+            $now_admin = Auth::guard('admin')->user();
+            $under = Node::where("shop", $admins)->first()->getChildren()->pluck('id')->count();
+
+            //admin
+            if ($now_admin->type == "99"){
+                $a = str_pad(strval($under + 1), 3, "0", STR_PAD_LEFT);
+                $a = str_pad($a, 10, "0", STR_PAD_RIGHT);
+            }
+            //agency
+            else if ($now_admin->type == "1"){
+                $a_left = substr($admin->a, 0, 3);
+                $a_right = str_pad(strval($under + 1), 2, "0", STR_PAD_LEFT);
+                $a_right = str_pad($a_right, 7, "0", STR_PAD_RIGHT);
+                $a = $a_left . $a_right;
+            }
+            //distributor
+            else if ($now_admin->type == "2"){
+                $a_left = substr($admin->a, 0, 5);
+                $a_right = str_pad(strval($under + 1), 5, "0", STR_PAD_LEFT);
+                $a = $a_left . $a_right;
+            }
 
             $data = [
                 "name" => $row[1],
