@@ -23,15 +23,6 @@ class AdminsImport implements ToCollection, WithStartRow
     */
     public function collection(Collection $rows)
     {
-        Log::debug($rows->toArray());
-
-        Validator::make($rows->toArray(), [
-            "*.1" => "required",
-            "*.10" => "required|email|unique:admins",
-            "*.24" => "required|integer"
-        ])->validate();
-
-
         $admins = Auth::guard('admin')->user()->id;
 
         if (Auth::guard('admin')->user()->type == "99") {
@@ -47,6 +38,21 @@ class AdminsImport implements ToCollection, WithStartRow
         foreach ($rows as $row) 
         {
 
+            $row = $row->toArray();
+
+            $data = [
+                "name" => $row[1],
+                "email" => $row[10],
+                "incentive" => $row[24],
+            ];
+            $conditions = [
+                "name" => "required",
+                "email" => "required|email|unique:admins",
+                "incentive" => "required|integer"
+            ];
+            
+            Validator::make($data, $conditions)->validate();
+            
             $p = str_random(12);
 
             if ($row[15] != ""){
