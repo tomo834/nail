@@ -39,22 +39,6 @@ class AdminsImport implements ToCollection, WithStartRow
         {
 
             $row = $row->toArray();
-
-            $data = [
-                "request" => $row[0],
-                "name" => $row[1],
-                "email" => $row[10],
-                "incentive" => $row[24],
-            ];
-            $conditions = [
-                "request" => "date",
-                "name" => "required",
-                "email" => "required|email|unique:admins",
-                "incentive" => "required|integer"
-            ];
-            
-            Validator::make($data, $conditions)->validate();
-            
             $p = str_random(12);
 
             if ($row[15] != ""){
@@ -104,6 +88,23 @@ class AdminsImport implements ToCollection, WithStartRow
             }else{
                 $mailing_date = $row[31];
             }
+            
+            $data = [
+                "request" => $row[0],
+                "name" => $row[1],
+                "email" => $row[10],
+                "incentive" => $row[24],
+            ];
+            $conditions = [
+                "request" => "date",
+                "name" => "required",
+                "email" => "required|email|unique:admins",
+                "incentive" => "required|integer"
+            ];
+            
+            Validator::make($data, $conditions)->validate();
+            
+            
 
             $admin = Admin::create([
                 'name' => $row[1],
