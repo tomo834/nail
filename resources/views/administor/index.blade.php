@@ -120,144 +120,144 @@
 
 						@foreach ($node->children as $agency)
 						<tr>
-							<td>{{ $node->admin_info->account_id }}</td>
+							<td>{{ $agency->admin_info->account_id }}</td>
 							<td>
-								@if ($node->admin_info->type === "1")
+								@if ($agency->admin_info->type === "1")
 								    代理店
-								@elseif ($node->admin_info->type === "2")
+								@elseif ($agency->admin_info->type === "2")
 								    特約店
-								@elseif ($node->admin_info->type === "3")
+								@elseif ($agency->admin_info->type === "3")
 								    加盟店			
-								@elseif ($node->admin_info->type === "99")
+								@elseif ($agency->admin_info->type === "99")
 									運営
 								@endif
 							</td>
-							<td>{{ $node->admin_info->email}}</td>
-							<td>{{ $node->admin_info->company_name }}</td>
-							<td>{{ $node->admin_info->representative }}</td>
-							<td>{{ $node->admin_info->request }}</td>
-							<td>{{ $node->admin_info->zip_code }}</td>
-							<td>{{ $node->admin_info->address }}</td>
-							<td>{{ $node->admin_info->cellphone }}</td>
-							<td>{{ $node->admin_info->phone }}</td>
-							<td>{{ $node->admin_info->fax }}</td>
-							<td>{{ $node->admin_info->name }}</td>
-							<td>{{ $node->admin_info->shop_pic }}</td>
-							<td>{{ $node->admin_info->shop_zip_code }}</td>
-							<td>{{ $node->admin_info->shop_address }}</td>
-							<td>{{ $node->admin_info->shop_phone }}</td>
-							<td>{{ $node->admin_info->shop_open }}</td>
-							<td>{{ $node->admin_info->has_nailist }}</td>
-							<td>{{ $node->admin_info->homepage }}</td>
-							<td>{{ $node->admin_info->account_holder }}</td>
-							<td>{{ $node->admin_info->bank_name }}</td>
-							<td>{{ $node->admin_info->branch_name }}</td>
-							<td>{{ $node->admin_info->bank_code }}</td>
-							<td>{{ $node->admin_info->branch_code }}</td>
-							<td>{{ $node->admin_info->account_type }}</td>
-							<td>{{ $node->admin_info->account_number }}</td>
-							<td>{{ $node->admin_info->incentive }}%</td>
-							<td>{{ $node->admin_info->need_file }}</td>
-							<td>{{ $node->admin_info->historical_matters }}</td>
-							<td>{{ $node->admin_info->seal_certficate }}</td>
-							<td>{{ $node->admin_info->passbook }}</td>
-							<td>{{ $node->admin_info->residents_card }}</td>
-							<td>{{ $node->admin_info->other }}</td>
-							<td>{{ $node->admin_info->mailing_date }}</td>
+							<td>{{ $agency->admin_info->email}}</td>
+							<td>{{ $agency->admin_info->company_name }}</td>
+							<td>{{ $agency->admin_info->representative }}</td>
+							<td>{{ $agency->admin_info->request }}</td>
+							<td>{{ $agency->admin_info->zip_code }}</td>
+							<td>{{ $agency->admin_info->address }}</td>
+							<td>{{ $agency->admin_info->cellphone }}</td>
+							<td>{{ $agency->admin_info->phone }}</td>
+							<td>{{ $agency->admin_info->fax }}</td>
+							<td>{{ $agency->admin_info->name }}</td>
+							<td>{{ $agency->admin_info->shop_pic }}</td>
+							<td>{{ $agency->admin_info->shop_zip_code }}</td>
+							<td>{{ $agency->admin_info->shop_address }}</td>
+							<td>{{ $agency->admin_info->shop_phone }}</td>
+							<td>{{ $agency->admin_info->shop_open }}</td>
+							<td>{{ $agency->admin_info->has_nailist }}</td>
+							<td>{{ $agency->admin_info->homepage }}</td>
+							<td>{{ $agency->admin_info->account_holder }}</td>
+							<td>{{ $agency->admin_info->bank_name }}</td>
+							<td>{{ $agency->admin_info->branch_name }}</td>
+							<td>{{ $agency->admin_info->bank_code }}</td>
+							<td>{{ $agency->admin_info->branch_code }}</td>
+							<td>{{ $agency->admin_info->account_type }}</td>
+							<td>{{ $agency->admin_info->account_number }}</td>
+							<td>{{ $agency->admin_info->incentive }}%</td>
+							<td>{{ $agency->admin_info->need_file }}</td>
+							<td>{{ $agency->admin_info->historical_matters }}</td>
+							<td>{{ $agency->admin_info->seal_certficate }}</td>
+							<td>{{ $agency->admin_info->passbook }}</td>
+							<td>{{ $agency->admin_info->residents_card }}</td>
+							<td>{{ $agency->admin_info->other }}</td>
+							<td>{{ $agency->admin_info->mailing_date }}</td>
 						</tr>
 							@foreach ($agency->children as $distributor)
 							<tr>
-								<td>{{ $node->admin_info->account_id }}</td>
+								<td>{{ $distributor->admin_info->account_id }}</td>
 								<td>
-									@if ($node->admin_info->type === "1")
+									@if ($distributor->admin_info->type === "1")
 									    代理店
-									@elseif ($node->admin_info->type === "2")
+									@elseif ($distributor->admin_info->type === "2")
 									    特約店
-									@elseif ($node->admin_info->type === "3")
+									@elseif ($distributor->admin_info->type === "3")
 									    加盟店			
-									@elseif ($node->admin_info->type === "99")
+									@elseif ($distributor->admin_info->type === "99")
 										運営
 									@endif
 								</td>
-								<td>{{ $node->admin_info->email}}</td>
-								<td>{{ $node->admin_info->company_name }}</td>
-								<td>{{ $node->admin_info->representative }}</td>
-								<td>{{ $node->admin_info->request }}</td>
-								<td>{{ $node->admin_info->zip_code }}</td>
-								<td>{{ $node->admin_info->address }}</td>
-								<td>{{ $node->admin_info->cellphone }}</td>
-								<td>{{ $node->admin_info->phone }}</td>
-								<td>{{ $node->admin_info->fax }}</td>
-								<td>{{ $node->admin_info->name }}</td>
-								<td>{{ $node->admin_info->shop_pic }}</td>
-								<td>{{ $node->admin_info->shop_zip_code }}</td>
-								<td>{{ $node->admin_info->shop_address }}</td>
-								<td>{{ $node->admin_info->shop_phone }}</td>
-								<td>{{ $node->admin_info->shop_open }}</td>
-								<td>{{ $node->admin_info->has_nailist }}</td>
-								<td>{{ $node->admin_info->homepage }}</td>
-								<td>{{ $node->admin_info->account_holder }}</td>
-								<td>{{ $node->admin_info->bank_name }}</td>
-								<td>{{ $node->admin_info->branch_name }}</td>
-								<td>{{ $node->admin_info->bank_code }}</td>
-								<td>{{ $node->admin_info->branch_code }}</td>
-								<td>{{ $node->admin_info->account_type }}</td>
-								<td>{{ $node->admin_info->account_number }}</td>
-								<td>{{ $node->admin_info->incentive }}%</td>
-								<td>{{ $node->admin_info->need_file }}</td>
-								<td>{{ $node->admin_info->historical_matters }}</td>
-								<td>{{ $node->admin_info->seal_certficate }}</td>
-								<td>{{ $node->admin_info->passbook }}</td>
-								<td>{{ $node->admin_info->residents_card }}</td>
-								<td>{{ $node->admin_info->other }}</td>
-								<td>{{ $node->admin_info->mailing_date }}</td>
+								<td>{{ $distributor->admin_info->email}}</td>
+								<td>{{ $distributor->admin_info->company_name }}</td>
+								<td>{{ $distributor->admin_info->representative }}</td>
+								<td>{{ $distributor->admin_info->request }}</td>
+								<td>{{ $distributor->admin_info->zip_code }}</td>
+								<td>{{ $distributor->admin_info->address }}</td>
+								<td>{{ $distributor->admin_info->cellphone }}</td>
+								<td>{{ $distributor->admin_info->phone }}</td>
+								<td>{{ $distributor->admin_info->fax }}</td>
+								<td>{{ $distributor->admin_info->name }}</td>
+								<td>{{ $distributor->admin_info->shop_pic }}</td>
+								<td>{{ $distributor->admin_info->shop_zip_code }}</td>
+								<td>{{ $distributor->admin_info->shop_address }}</td>
+								<td>{{ $distributor->admin_info->shop_phone }}</td>
+								<td>{{ $distributor->admin_info->shop_open }}</td>
+								<td>{{ $distributor->admin_info->has_nailist }}</td>
+								<td>{{ $distributor->admin_info->homepage }}</td>
+								<td>{{ $distributor->admin_info->account_holder }}</td>
+								<td>{{ $distributor->admin_info->bank_name }}</td>
+								<td>{{ $distributor->admin_info->branch_name }}</td>
+								<td>{{ $distributor->admin_info->bank_code }}</td>
+								<td>{{ $distributor->admin_info->branch_code }}</td>
+								<td>{{ $distributor->admin_info->account_type }}</td>
+								<td>{{ $distributor->admin_info->account_number }}</td>
+								<td>{{ $distributor->admin_info->incentive }}%</td>
+								<td>{{ $distributor->admin_info->need_file }}</td>
+								<td>{{ $distributor->admin_info->historical_matters }}</td>
+								<td>{{ $distributor->admin_info->seal_certficate }}</td>
+								<td>{{ $distributor->admin_info->passbook }}</td>
+								<td>{{ $distributor->admin_info->residents_card }}</td>
+								<td>{{ $distributor->admin_info->other }}</td>
+								<td>{{ $distributor->admin_info->mailing_date }}</td>
 							</tr>
 								@foreach ($distributor->children as $member)
 								<tr>
-									<td>{{ $node->admin_info->account_id }}</td>
+									<td>{{ $member->admin_info->account_id }}</td>
 									<td>
-										@if ($node->admin_info->type === "1")
+										@if ($member->admin_info->type === "1")
 										    代理店
-										@elseif ($node->admin_info->type === "2")
+										@elseif ($member->admin_info->type === "2")
 										    特約店
-										@elseif ($node->admin_info->type === "3")
+										@elseif ($member->admin_info->type === "3")
 										    加盟店			
-										@elseif ($node->admin_info->type === "99")
+										@elseif ($member->admin_info->type === "99")
 											運営
 										@endif
 									</td>
-									<td>{{ $node->admin_info->email}}</td>
-									<td>{{ $node->admin_info->company_name }}</td>
-									<td>{{ $node->admin_info->representative }}</td>
-									<td>{{ $node->admin_info->request }}</td>
-									<td>{{ $node->admin_info->zip_code }}</td>
-									<td>{{ $node->admin_info->address }}</td>
-									<td>{{ $node->admin_info->cellphone }}</td>
-									<td>{{ $node->admin_info->phone }}</td>
-									<td>{{ $node->admin_info->fax }}</td>
-									<td>{{ $node->admin_info->name }}</td>
-									<td>{{ $node->admin_info->shop_pic }}</td>
-									<td>{{ $node->admin_info->shop_zip_code }}</td>
-									<td>{{ $node->admin_info->shop_address }}</td>
-									<td>{{ $node->admin_info->shop_phone }}</td>
-									<td>{{ $node->admin_info->shop_open }}</td>
-									<td>{{ $node->admin_info->has_nailist }}</td>
-									<td>{{ $node->admin_info->homepage }}</td>
-									<td>{{ $node->admin_info->account_holder }}</td>
-									<td>{{ $node->admin_info->bank_name }}</td>
-									<td>{{ $node->admin_info->branch_name }}</td>
-									<td>{{ $node->admin_info->bank_code }}</td>
-									<td>{{ $node->admin_info->branch_code }}</td>
-									<td>{{ $node->admin_info->account_type }}</td>
-									<td>{{ $node->admin_info->account_number }}</td>
-									<td>{{ $node->admin_info->incentive }}%</td>
-									<td>{{ $node->admin_info->need_file }}</td>
-									<td>{{ $node->admin_info->historical_matters }}</td>
-									<td>{{ $node->admin_info->seal_certficate }}</td>
-									<td>{{ $node->admin_info->passbook }}</td>
-									<td>{{ $node->admin_info->residents_card }}</td>
-									<td>{{ $node->admin_info->other }}</td>
-									<td>{{ $node->admin_info->mailing_date }}</td>
+									<td>{{ $member->admin_info->email}}</td>
+									<td>{{ $member->admin_info->company_name }}</td>
+									<td>{{ $member->admin_info->representative }}</td>
+									<td>{{ $member->admin_info->request }}</td>
+									<td>{{ $member->admin_info->zip_code }}</td>
+									<td>{{ $member->admin_info->address }}</td>
+									<td>{{ $member->admin_info->cellphone }}</td>
+									<td>{{ $member->admin_info->phone }}</td>
+									<td>{{ $member->admin_info->fax }}</td>
+									<td>{{ $member->admin_info->name }}</td>
+									<td>{{ $member->admin_info->shop_pic }}</td>
+									<td>{{ $member->admin_info->shop_zip_code }}</td>
+									<td>{{ $member->admin_info->shop_address }}</td>
+									<td>{{ $member->admin_info->shop_phone }}</td>
+									<td>{{ $member->admin_info->shop_open }}</td>
+									<td>{{ $member->admin_info->has_nailist }}</td>
+									<td>{{ $member->admin_info->homepage }}</td>
+									<td>{{ $member->admin_info->account_holder }}</td>
+									<td>{{ $member->admin_info->bank_name }}</td>
+									<td>{{ $member->admin_info->branch_name }}</td>
+									<td>{{ $member->admin_info->bank_code }}</td>
+									<td>{{ $member->admin_info->branch_code }}</td>
+									<td>{{ $member->admin_info->account_type }}</td>
+									<td>{{ $member->admin_info->account_number }}</td>
+									<td>{{ $member->admin_info->incentive }}%</td>
+									<td>{{ $member->admin_info->need_file }}</td>
+									<td>{{ $member->admin_info->historical_matters }}</td>
+									<td>{{ $member->admin_info->seal_certficate }}</td>
+									<td>{{ $member->admin_info->passbook }}</td>
+									<td>{{ $member->admin_info->residents_card }}</td>
+									<td>{{ $member->admin_info->other }}</td>
+									<td>{{ $member->admin_info->mailing_date }}</td>
 								</tr>
 								@endforeach
 							@endforeach
