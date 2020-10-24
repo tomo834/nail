@@ -39,7 +39,7 @@ class PurchaseController extends Controller
     		CURLOPT_URL => $url,
     		CURLOPT_RETURNTRANSFER => true,
     		CURLOPT_POST => true,
-    		CURLOPT_POSTFIELDS => http_build_query($data),
+    		CURLOPT_POSTFIELDS => $data,
     	]);
 
     	$response = curl_exec($ch);
