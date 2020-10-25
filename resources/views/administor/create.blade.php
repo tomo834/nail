@@ -337,7 +337,7 @@
                             <label for="mailing_date" class="col-md-4 control-label">申込通知お知らせ</label>
 
                             <div class="col-md-6">
-                                <input id="mailing_date" type="date" class="form-control" name="mailing_date" value="{{ old('mailing_date') }}" autofocus>
+                                <input id="mailing_date" type="date" class="form-control" name="mailing_date" value="{{ old('mailing_date') }}"  placeholder ="2020-10-01"autofocus>
 
                                 @if ($errors->has('mailing_date'))
                                     <span class="help-block">
@@ -392,15 +392,15 @@
                         </div>
 
 
-                        <div class="form-group{{ $errors->has('request') ? ' has-error' : '' }}">
-                            <label for="request" class="col-md-4 control-label">申込日</label>
+                        <div class="form-group{{ $errors->has('request_date') ? ' has-error' : '' }}">
+                            <label for="request_date" class="col-md-4 control-label">申込日</label>
 
                             <div class="col-md-6">
-                                <input id="request" type="date" class="form-control" name="request" value="{{ old('request') }}" autofocus>
+                                <input id="request_date" type="date" class="form-control" name="request_date" value="{{ old('request_date') }}" placeholder ="2020-10-01" autofocus>
 
-                                @if ($errors->has('request'))
+                                @if ($errors->has('request_date'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('request') }}</strong>
+                                        <strong>{{ $errors->first('request_date') }}</strong>
                                     </span>
                                 @endif
                             </div>

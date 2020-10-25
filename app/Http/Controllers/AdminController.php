@@ -109,6 +109,7 @@ class AdminController extends Controller
         $new_admin->name = $request->name;
         $new_admin->email = $request->email;
 
+        $new_admin->request = $request->request_date;
         $new_admin->company_name = $request->company_name;
         $new_admin->representative = $request->representative;
         $new_admin->zip_code = $request->zip_code;
@@ -124,7 +125,7 @@ class AdminController extends Controller
         $new_admin->shop_open = $request->shop_open;
         $new_admin->has_nailist = $request->has_nailist;
         $new_admin->homepage = $request->homepage;
-        
+
         $new_admin->account_holder = $request->account_holder;
         $new_admin->bank_name = $request->bank_name;
         $new_admin->branch_name = $request->branch_name;
