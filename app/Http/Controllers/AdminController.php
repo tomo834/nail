@@ -108,6 +108,8 @@ class AdminController extends Controller
         $new_admin = new Admin();
         $new_admin->name = $request->name;
         $new_admin->email = $request->email;
+        $new_admin->type = $type;
+        $new_admin->account_id = $account_id;
         $p = str_random(12);
         Log::debug($under);
         Log::debug($account_id);
