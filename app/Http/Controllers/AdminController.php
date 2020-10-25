@@ -106,7 +106,7 @@ class AdminController extends Controller
         $new_admin = new Admin();
         $new_admin->name = $request->name;
         $new_admin->email = $request->email;
-        $new_admin->request = $request->request,
+        $new_admin->request = $request->request;
         $new_admin->company_name = $request->company_name;
         $new_admin->representative = $request->representative;
         $new_admin->zip_code = $request->zip_code;
