@@ -3,7 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-12">
+            @if (Auth::guard('admin')->user()->type === "99")
+                <h2>代理店登録</h2>
+            @elseif (Auth::guard('admin')->user()->type === "1")
+                <h2>特約店登録</h2>
+            @elseif (Auth::guard('admin')->user()->type === "2")
+                <h2>加盟店登録</h2>
+            @endif
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin') }}">
@@ -13,7 +20,7 @@
                             <label for="name" class="col-sm-2 col-form-label text-danger">店舗名</label>
 
                             <div class="col-sm-10">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus=""> 
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -23,7 +30,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
                             <label for="email" class="col-sm-2 col-form-label text-danger">E-Mail Address</label>
 
                             <div class="col-sm-10">
@@ -37,11 +44,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('incentive') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('incentive') ? ' has-error' : '' }} row">
                             <label for="incentive" class="col-sm-2 col-form-label text-danger">インセンティブ</label>
 
                             <div class="col-sm-10">
-                                <input id="incentive" type="number" class="form-control" name="incentive" value="{{ old('incentive') }}" autofocus>
+                                <input id="incentive" type="number" class="form-control" name="incentive" value="{{ old('incentive') }}">
 
                                 @if ($errors->has('incentive'))
                                     <span class="help-block">
@@ -51,11 +58,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('company_name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('company_name') ? ' has-error' : '' }} row">
                             <label for="company_name" class="col-sm-2 col-form-label">会社名</label>
 
                             <div class="col-sm-10">
-                                <input id="company_name" type="text" class="form-control" name="company_name" value="{{ old('company_name') }}" autofocus>
+                                <input id="company_name" type="text" class="form-control" name="company_name" value="{{ old('company_name') }}">
 
                                 @if ($errors->has('company_name'))
                                     <span class="help-block">
@@ -66,11 +73,11 @@
                         </div>
 
 
-                        <div class="form-group{{ $errors->has('representative') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('representative') ? ' has-error' : '' }} row">
                             <label for="representative" class="col-sm-2 col-form-label">代表者</label>
 
                             <div class="col-sm-10">
-                                <input id="representative" type="text" class="form-control" name="representative" value="{{ old('representative') }}" autofocus>
+                                <input id="representative" type="text" class="form-control" name="representative" value="{{ old('representative') }}">
 
                                 @if ($errors->has('representative'))
                                     <span class="help-block">
@@ -80,11 +87,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('shop_pic') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('shop_pic') ? ' has-error' : '' }} row">
                             <label for="shop_pic" class="col-sm-2 col-form-label">店舗代表者</label>
 
                             <div class="col-sm-10">
-                                <input id="shop_pic" type="text" class="form-control" name="shop_pic" value="{{ old('shop_pic') }}" autofocus>
+                                <input id="shop_pic" type="text" class="form-control" name="shop_pic" value="{{ old('shop_pic') }}">
 
                                 @if ($errors->has('shop_pic'))
                                     <span class="help-block">
@@ -94,11 +101,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('zip_code') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('zip_code') ? ' has-error' : '' }} row">
                             <label for="zip_code" class="col-sm-2 col-form-label">郵便番号</label>
 
                             <div class="col-sm-10">
-                                <input id="zip_code" type="text" class="form-control" name="zip_code" value="{{ old('zip_code') }}" autofocus>
+                                <input id="zip_code" type="text" class="form-control" name="zip_code" value="{{ old('zip_code') }}">
 
                                 @if ($errors->has('zip_code'))
                                     <span class="help-block">
@@ -108,11 +115,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }} row">
                             <label for="address" class="col-sm-2 col-form-label">住所</label>
 
                             <div class="col-sm-10">
-                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" autofocus>
+                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}">
 
                                 @if ($errors->has('address'))
                                     <span class="help-block">
@@ -122,11 +129,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }} row">
                             <label for="phone" class="col-sm-2 col-form-label">電話番号</label>
 
                             <div class="col-sm-10">
-                                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" autofocus>
+                                <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}">
 
                                 @if ($errors->has('phone'))
                                     <span class="help-block">
@@ -136,11 +143,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('fax') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('fax') ? ' has-error' : '' }} row">
                             <label for="fax" class="col-sm-2 col-form-label">FAX</label>
 
                             <div class="col-sm-10">
-                                <input id="fax" type="text" class="form-control" name="fax" value="{{ old('fax') }}" autofocus>
+                                <input id="fax" type="text" class="form-control" name="fax" value="{{ old('fax') }}">
 
                                 @if ($errors->has('fax'))
                                     <span class="help-block">
@@ -150,11 +157,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('cellphone') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('cellphone') ? ' has-error' : '' }} row">
                             <label for="cellphone" class="col-sm-2 col-form-label">携帯番号</label>
 
                             <div class="col-sm-10">
-                                <input id="cellphone" type="text" class="form-control" name="cellphone" value="{{ old('cellphone') }}" autofocus>
+                                <input id="cellphone" type="text" class="form-control" name="cellphone" value="{{ old('cellphone') }}">
 
                                 @if ($errors->has('cellphone'))
                                     <span class="help-block">
@@ -164,11 +171,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('account_holder') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('account_holder') ? ' has-error' : '' }} row">
                             <label for="account_holder" class="col-sm-2 col-form-label">口座名義</label>
 
                             <div class="col-sm-10">
-                                <input id="account_holder" type="text" class="form-control" name="account_holder" value="{{ old('account_holder') }}" autofocus>
+                                <input id="account_holder" type="text" class="form-control" name="account_holder" value="{{ old('account_holder') }}">
 
                                 @if ($errors->has('account_holder'))
                                     <span class="help-block">
@@ -178,11 +185,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('bank_name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('bank_name') ? ' has-error' : '' }} row">
                             <label for="bank_name" class="col-sm-2 col-form-label">銀行名</label>
 
                             <div class="col-sm-10">
-                                <input id="bank_name" type="text" class="form-control" name="bank_name" value="{{ old('bank_name') }}" autofocus>
+                                <input id="bank_name" type="text" class="form-control" name="bank_name" value="{{ old('bank_name') }}">
 
                                 @if ($errors->has('bank_name'))
                                     <span class="help-block">
@@ -192,11 +199,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('branch_name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('branch_name') ? ' has-error' : '' }} row">
                             <label for="branch_name" class="col-sm-2 col-form-label">支店名</label>
 
                             <div class="col-sm-10">
-                                <input id="branch_name" type="text" class="form-control" name="branch_name" value="{{ old('branch_name') }}" autofocus>
+                                <input id="branch_name" type="text" class="form-control" name="branch_name" value="{{ old('branch_name') }}">
 
                                 @if ($errors->has('branch_name'))
                                     <span class="help-block">
@@ -206,11 +213,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('bank_code') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('bank_code') ? ' has-error' : '' }} row">
                             <label for="bank_code" class="col-sm-2 col-form-label">金融コード</label>
 
                             <div class="col-sm-10">
-                                <input id="bank_code" type="text" class="form-control" name="bank_code" value="{{ old('bank_code') }}" autofocus>
+                                <input id="bank_code" type="text" class="form-control" name="bank_code" value="{{ old('bank_code') }}">
 
                                 @if ($errors->has('bank_code'))
                                     <span class="help-block">
@@ -220,11 +227,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('branch_code') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('branch_code') ? ' has-error' : '' }} row">
                             <label for="branch_code" class="col-sm-2 col-form-label">支店コード</label>
 
                             <div class="col-sm-10">
-                                <input id="branch_code" type="text" class="form-control" name="branch_code" value="{{ old('branch_code') }}" autofocus>
+                                <input id="branch_code" type="text" class="form-control" name="branch_code" value="{{ old('branch_code') }}">
 
                                 @if ($errors->has('branch_code'))
                                     <span class="help-block">
@@ -234,11 +241,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('account_type') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('account_type') ? ' has-error' : '' }} row">
                             <label for="account_type" class="col-sm-2 col-form-label">口座種類</label>
 
                             <div class="col-sm-10">
-                                <select class="form-control" id="account_type" name="account_type" value="{{ old('account_type') }}" autofocus>
+                                <select class="form-control" id="account_type" name="account_type" value="{{ old('account_type') }}">
                                   <option>普通</option>
                                   <option>当座</option>
                                 </select>
@@ -251,11 +258,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('account_number') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('account_number') ? ' has-error' : '' }} row">
                             <label for="account_number" class="col-sm-2 col-form-label">口座番号</label>
 
                             <div class="col-sm-10">
-                                <input id="account_number" type="text" class="form-control" name="account_number" value="{{ old('account_number') }}" autofocus>
+                                <input id="account_number" type="text" class="form-control" name="account_number" value="{{ old('account_number') }}">
 
                                 @if ($errors->has('account_number'))
                                     <span class="help-block">
@@ -310,11 +317,11 @@
                         </div>
 
 
-                        <div class="form-group{{ $errors->has('shop_address') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('shop_address') ? ' has-error' : '' }} row">
                             <label for="shop_address" class="col-sm-2 col-form-label">店舗住所</label>
 
                             <div class="col-sm-10">
-                                <input id="shop_address" type="text" class="form-control" name="shop_address" value="{{ old('shop_address') }}" autofocus>
+                                <input id="shop_address" type="text" class="form-control" name="shop_address" value="{{ old('shop_address') }}">
 
                                 @if ($errors->has('shop_address'))
                                     <span class="help-block">
@@ -325,11 +332,11 @@
                         </div>
 
 
-                        <div class="form-group{{ $errors->has('request_date') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('request_date') ? ' has-error' : '' }} row">
                             <label for="request_date" class="col-sm-2 col-form-label">申込日</label>
 
                             <div class="col-sm-10">
-                                <input id="request_date" type="date" class="form-control" name="request_date" value="{{ old('request_date') }}" placeholder ="2020-10-01" autofocus>
+                                <input id="request_date" type="date" class="form-control" name="request_date" value="{{ old('request_date') }}" placeholder ="2020-10-01">
 
                                 @if ($errors->has('request_date'))
                                     <span class="help-block">
@@ -339,11 +346,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('shop_phone') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('shop_phone') ? ' has-error' : '' }} row">
                             <label for="shop_phone" class="col-sm-2 col-form-label">店舗電話番号</label>
 
                             <div class="col-sm-10">
-                                <input id="shop_phone" type="text" class="form-control" name="shop_phone" value="{{ old('shop_phone') }}" autofocus>
+                                <input id="shop_phone" type="text" class="form-control" name="shop_phone" value="{{ old('shop_phone') }}">
 
                                 @if ($errors->has('shop_phone'))
                                     <span class="help-block">
@@ -353,11 +360,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('shop_open') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('shop_open') ? ' has-error' : '' }} row">
                             <label for="shop_open" class="col-sm-2 col-form-label">営業時間</label>
 
                             <div class="col-sm-10">
-                                <input id="shop_open" type="text" class="form-control" name="shop_open" value="{{ old('shop_open') }}" autofocus>
+                                <input id="shop_open" type="text" class="form-control" name="shop_open" value="{{ old('shop_open') }}">
 
                                 @if ($errors->has('shop_open'))
                                     <span class="help-block">
