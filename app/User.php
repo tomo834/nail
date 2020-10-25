@@ -38,4 +38,8 @@ class User extends Authenticatable
     {
         $this->notify(new UserResetPassword($token));
     }
+
+    public function admin(){
+        return $this->belongsTo("App\Admin");
+    }
 }
