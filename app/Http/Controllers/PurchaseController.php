@@ -138,7 +138,7 @@ class PurchaseController extends Controller
     				else {
     					$p_incentive = new ProductIncentive();
     					$p_incentive->product_purchasing_id = $p->id;
-    					$incentive = $p->price * 0.01 * $parent->shop->incentive;
+    					$incentive = $p->price * 0.01 * $parent->admin_info->incentive;
     					$p_incentive->incentive = $incentive;
     					$p_incentive->admin_id = $parent->shop;
     					$p_incentive->receive = date("Y-m-d H:i:s");
