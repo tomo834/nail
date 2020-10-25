@@ -38,7 +38,7 @@
 						<td>{{ $node->admin_info->name }}</td>
 						<td class="incentive">{{ $node->admin_info->incentive_info->sum("incentive") }}</td>
 						<td class="p_incentive">{{ $node->admin_info->product_incentive_info->sum("incentive") }}</td>
-						<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive")) }} + {{ intval($node->admin_info->product_incentive_info->sum("incentive")) }}</td>
+						<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive"))  +  intval($node->admin_info->product_incentive_info->sum("incentive")) }}</td>
 					</tr>
 
 						@foreach ($node->children as $agency)
@@ -77,7 +77,7 @@
 								<td>{{ $node->admin_info->name }}</td>
 								<td class="incentive">{{ $node->admin_info->incentive_info->sum("incentive") }}</td>
 								<td class="p_incentive">{{ $node->admin_info->product_incentive_info->sum("incentive") }}</td>
-								<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive")) }} + {{intval($node->admin_info->product_incentive_info->sum("incentive")) }}</td>
+								<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive"))  + intval($node->admin_info->product_incentive_info->sum("incentive")) }}</td>
 							</tr>
 								@foreach ($distributor->children as $member)
 								<tr>
@@ -96,7 +96,7 @@
 									<td>{{ $node->admin_info->name }}</td>
 									<td class="incentive">{{ $node->admin_info->incentive_info->sum("incentive") }}</td>
 									<td class="p_incentive">{{ $node->admin_info->product_incentive_info->sum("incentive") }}</td>
-									<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive")) }} + {{intval($node->admin_info->product_incentive_info->sum("incentive"))}}</td>
+									<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive")) + intval($node->admin_info->product_incentive_info->sum("incentive"))}}</td>
 								</tr>
 								@endforeach
 							@endforeach
