@@ -145,9 +145,11 @@ class AdminController extends Controller
         Log::debug($under);
         Log::debug($account_id);
         $new_admin->password = Hash::make($p);
+
+        Log::debug("save");
         $new_admin->save();
 
-        
+        Log::debug('OK');
 
         $rootTree = Node::where("shop", $admin->id)->first();
         $childTree = new Node();

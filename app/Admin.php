@@ -17,7 +17,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','type', 'name_jp',"company_name","representative","shop_name","shop_pic", "birthday","address","phone","fax","cellphone","account_holder","bank_name","branch_name","bank_code","branch_code","account_type","account_number","incentive","need_file","historical_matters","seal_certificate","passbook","residents_card","other","mailing_date","account_id","homepage","zip_code","shop_zip_code","shop_address","request","shop_phone","shop_open","has_nailist"
+        'name', 'email', 'password','type', 'name_jp',"company_name","representative","shop_name","shop_pic","address","phone","fax","cellphone","account_holder","bank_name","branch_name","bank_code","branch_code","account_type","account_number","incentive","need_file","historical_matters","seal_certificate","passbook","residents_card","other","mailing_date","account_id","homepage","zip_code","shop_zip_code","shop_address","request","shop_phone","shop_open","has_nailist"
     ];
     /**
      * The attributes that should be hidden for arrays.
