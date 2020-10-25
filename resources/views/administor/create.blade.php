@@ -267,43 +267,43 @@
 
 
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="need_file" name="need_file">
+                          <input class="form-check-input" type="checkbox" value="1" id="need_file" name="need_file">
                           <label class="form-check-label" for="need_file">
                             必要書類
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="historical_matters" name="historical_matters">
+                          <input class="form-check-input" type="checkbox" value="1" id="historical_matters" name="historical_matters">
                           <label class="form-check-label" for="historical_matters">
                             履歴事項証明書
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="seal_certificate" name="seal_certificate">
+                          <input class="form-check-input" type="checkbox" value="1" id="seal_certificate" name="seal_certificate">
                           <label class="form-check-label" for="seal_certificate">
                             印鑑証明
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="passbook" name="passbook">
+                          <input class="form-check-input" type="checkbox" value="1" id="passbook" name="passbook">
                           <label class="form-check-label" for="passbook">
                             振り込み通帳画像
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="residents_card" name="residents_card">
+                          <input class="form-check-input" type="checkbox" value="1" id="residents_card" name="residents_card">
                           <label class="form-check-label" for="residents_card">
                             住民票
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="other" name="other">
+                          <input class="form-check-input" type="checkbox" value="1" id="other" name="other">
                           <label class="form-check-label" for="other">
                             開発業届出、確定申告、営業許可書
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="has_nailist" name="has_nailist">
+                          <input class="form-check-input" type="checkbox" value="1" id="has_nailist" name="has_nailist">
                           <label class="form-check-label" for="has_nailist">
                             ネイリストの有無
                           </label>
