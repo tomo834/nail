@@ -51,14 +51,14 @@ class AdminsImport implements ToCollection, WithStartRow
             }
             //agency
             else if ($now_admin->type == "1"){
-                $a_left = substr($admin->account_id, 0, 3);
+                $a_left = substr($now_admin->account_id, 0, 3);
                 $a_right = str_pad(strval($under + 1), 2, "0", STR_PAD_LEFT);
                 $a_right = str_pad($a_right, 7, "0", STR_PAD_RIGHT);
                 $a = $a_left . $a_right;
             }
             //distributor
             else if ($now_admin->type == "2"){
-                $a_left = substr($admin->account_id, 0, 5);
+                $a_left = substr($now_admin->account_id, 0, 5);
                 $a_right = str_pad(strval($under + 1), 5, "0", STR_PAD_LEFT);
                 $a = $a_left . $a_right;
             }

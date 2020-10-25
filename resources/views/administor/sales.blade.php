@@ -8,7 +8,7 @@
 			<h3>店舗売上</h3>
 
     		<div class="mb-3">
-				<form action="incentive" method="GET">
+				<form action="sales" method="GET">
 				    <input type="date" name="from" placeholder="yyyy-mm-dd">
 				        <span class="mx-3 text-grey">~</span>
 				    <input type="date" name="until" placeholder="yyyy-mm-dd">
