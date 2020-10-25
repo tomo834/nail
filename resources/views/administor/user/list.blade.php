@@ -4,13 +4,12 @@
 <div class="container">
     <div class="row">
     	<div class="col-12">
-    		<h2>NAILTRON : {{ Auth::guard('admin')->user()->name }}</h2>
 
 			<h3>ユーザー一覧</h3>
 
 			@foreach ($nodes as $node)
 				<div class="admin__tree">
-					<h5 class="admin__tree__btn">・{{ $node->admin_info->name }}aaa</h5>
+					<h5 class="admin__tree__btn">・{{ $node->admin_info->name }}</h5>
 					<div class="admin__tree__user">
 						@foreach ($node->admin_info->user_info as $users)
 							<p>{{ $users->name }}</p>
@@ -62,87 +61,47 @@
 					</tr>
 
 					@foreach ($nodes as $node)
-					@foreach ($node->admin_info->user_info as $users)
-					<tr>
-						<td>{{ $users->name }}</td>
-						<td>{{ $users->admin->name }}</td>
-						<td>{{ $users->admin->type }}</td>
-						<td>{{ $users->admin->email }}</td>
-						<td>{{ $users->downloads }}</td>
-						<td>{{ $users->gadget_id }}</td>
-						<td>{{ $users->register_gadget }}</td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					@endforeach
-
-						@foreach ($node->children as $agency)
+						@foreach ($node->admin_info->user_info as $users)
 						<tr>
-							<td>{{ $agency->admin_info->account_id }}</td>
-							<td>{{ $agency->admin_info->name }}</td>
-							<td>
-								@if ($agency->admin_info->type === "1")
-								    代理店
-								@elseif ($agency->admin_info->type === "2")
-								    特約店
-								@elseif ($agency->admin_info->type === "3")
-								    加盟店			
-								@elseif ($agency->admin_info->type === "99")
-									運営
-								@endif
-							</td>
-							<td>{{ $agency->admin_info->email}}</td>
-							<td>{{ $agency->admin_info->company_name }}</td>
-							<td>{{ $agency->admin_info->representative }}</td>
-							<td>{{ $agency->admin_info->incentive }}%</td>
-							<td>{{ $agency->admin_info->password }}</td>
+							<td>{{ $users->name }}</td>
+							<td>{{ $users->admin->name }}</td>
+							<td>{{ $users->admin->type }}</td>
+							<td>{{ $users->admin->email }}</td>
+							<td>{{ $users->downloads }}</td>
+							<td>{{ $users->gadget_id }}</td>
+							<td>{{ $users->register_gadget }}</td>
 						</tr>
-							@foreach ($agency->children as $distributor)
+							@foreach ($users as $user)
 							<tr>
-								<td>{{ $distributor->admin_info->account_id }}</td>
-								<td>{{ $distributor->admin_info->name }}</td>
-								<td>
-									@if ($distributor->admin_info->type === "1")
-									    代理店
-									@elseif ($distributor->admin_info->type === "2")
-									    特約店
-									@elseif ($distributor->admin_info->type === "3")
-									    加盟店			
-									@elseif ($distributor->admin_info->type === "99")
-										運営
-									@endif
-								</td>
-								<td>{{ $distributor->admin_info->email}}</td>
-								<td>{{ $distributor->admin_info->company_name }}</td>
-								<td>{{ $distributor->admin_info->representative }}</td>
-								<td>{{ $distributor->admin_info->incentive }}%</td>
+								<td>{{ $user->name }}</td>
+								<td>{{ $user->admin->name }}</td>
+								<td>{{ $user->admin->type }}</td>
+								<td>{{ $user->admin->email }}</td>
+								<td>{{ $user->downloads }}</td>
+								<td>{{ $user->gadget_id }}</td>
+								<td>{{ $user->register_gadget }}</td>
 							</tr>
-								@foreach ($distributor->children as $member)
+								@foreach ($user as $use)
 								<tr>
-									<td>{{ $member->admin_info->account_id }}</td>
-									<td>{{ $member->admin_info->name }}</td>
-									<td>
-										@if ($member->admin_info->type === "1")
-										    代理店
-										@elseif ($member->admin_info->type === "2")
-										    特約店
-										@elseif ($member->admin_info->type === "3")
-										    加盟店			
-										@elseif ($member->admin_info->type === "99")
-											運営
-										@endif
-									</td>
-									<td>{{ $member->admin_info->email}}</td>
-									<td>{{ $member->admin_info->company_name }}</td>
-									<td>{{ $member->admin_info->representative }}</td>
-									<td>{{ $member->admin_info->incentive }}%</td>
+									<td>{{ $use->name }}</td>
+									<td>{{ $use->admin->name }}</td>
+									<td>{{ $use->admin->type }}</td>
+									<td>{{ $use->admin->email }}</td>
+									<td>{{ $use->downloads }}</td>
+									<td>{{ $use->gadget_id }}</td>
+									<td>{{ $use->register_gadget }}</td>
 								</tr>
+									@foreach ($use as $us)
+									<tr>
+										<td>{{ $us->name }}</td>
+										<td>{{ $us->admin->name }}</td>
+										<td>{{ $us->admin->type }}</td>
+										<td>{{ $us->admin->email }}</td>
+										<td>{{ $us->downloads }}</td>
+										<td>{{ $us->gadget_id }}</td>
+										<td>{{ $us->register_gadget }}</td>
+									</tr>
+									@endforeach
 								@endforeach
 							@endforeach
 						@endforeach

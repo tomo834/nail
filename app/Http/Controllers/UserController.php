@@ -58,7 +58,7 @@ class UserController extends Controller
 
         //Mail::send(new RegisterMail($p));
 
-        return view('administor.user.index');  
+        return view('administor/users');  
     }
 
     /**

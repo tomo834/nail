@@ -47,6 +47,8 @@ class DeviceController extends Controller
         $devices->admin_id = Auth::guard('admin')->user()->id;
         $devices->save();
 
+        $devices = RegisterDevice::where('admin_id', Auth::guard('admin')->user()->id)->get();
+
         return view('administor/device/index', compact("devices"));
     }
 
