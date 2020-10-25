@@ -33,9 +33,9 @@
 	    				<td>{{ $history->receive->format('Y年m月d日') }}</td>
 	    				@if ($history->division == "1")
 	    				<td>入金済み</td>
-	    				@else if ($history->division == "2")
+	    				@elseif ($history->division == "2")
 	    				<td>未入金</td>
-	    				@else if ($history->division == "3")
+	    				@elseif ($history->division == "3")
 	    				<td>期限きれ</td>
 	    				@endif
 	    				<td></td>
