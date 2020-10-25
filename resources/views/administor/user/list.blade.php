@@ -33,7 +33,7 @@
 								</div>
 									@foreach ($distributor->children as $member)
 										<div class="admin__tree__member">
-											<h5 class="member__tree__btn">・{{ $member->admin_info }}</h5>
+											<h5 class="member__tree__btn">・{{ $member->admin_info->name }}</h5>
 											<div class="admin__tree__user">
 												@foreach ($member->admin_info->user_info as $users)
 													<p>{{ $users->name }}</p>

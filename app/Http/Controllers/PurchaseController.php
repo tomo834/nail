@@ -91,7 +91,7 @@ class PurchaseController extends Controller
 
 	    	if ($device_amount > 0) {
 	    		$p_deatil_d = new ProductPurchasingDetail();
-	    		$p_deatil_d->product_id = "1";
+	    		$p_deatil_d->product_id = "1";//gadget
 	    		$p_deatil_d->amount = $device_amount;
 	    		$p_deatil_d->total = $device_total;
 	    		$p_deatil_d->purchase = date("Y-m-d H:i:s");
@@ -100,7 +100,7 @@ class PurchaseController extends Controller
 	    		$p_d = new ProductPurchasing();
 	    		$p_d->admin_id = $admin;
 	    		$p_d->product_purchasing_detail_id = $p_deatil_d->id;
-	    		$p_d->product_purchasing_division_id = "2";
+	    		$p_d->product_purchasing_division_id = "1";//trading
 	    		$p_d->order_id = $order_id;
 	    		$p_d->price = $device_total;
 	    		$p_d->save();
@@ -108,7 +108,7 @@ class PurchaseController extends Controller
 
 	    	if ($coat_amount > 0) {
 	    		$p_deatil_c = new ProductPurchasingDetail();
-	    		$p_deatil_c->product_id = "2";
+	    		$p_deatil_c->product_id = "2";//coat
 	    		$p_deatil_c->amount = $coat_amount;
 	    		$p_deatil_c->total = $coat_total;
 	    		$p_deatil_c->purchase = date("Y-m-d H:i:s");
@@ -117,7 +117,7 @@ class PurchaseController extends Controller
 	    		$p_c = new ProductPurchasing();
 	    		$p_c->admin_id = $admin;
 	    		$p_c->product_purchasing_detail_id = $p_deatil_c->id;
-	    		$p_c->product_purchasing_division_id = "2";
+	    		$p_c->product_purchasing_division_id = "1";//trading
 	    		$p_c->order_id = $order_id;
 	    		$p_c->price = $coat_total;
 	    		$p_c->save();
@@ -127,7 +127,7 @@ class PurchaseController extends Controller
     		$products = ProductPurchasing::where('order_id', $order_id)->get();
     		foreach ($products as $product) { 
     			$p = ProductPurchasing::find($product->id);
-    			$p->product_purchasing_division_id = "1";
+    			$p->product_purchasing_division_id = "2";
     			$p->save();
 
     			$parents = Node::where("shop", $p->admin_id)->first()->getAncestors()->pluck('id')->toArray(); // [1, 2, 3]
