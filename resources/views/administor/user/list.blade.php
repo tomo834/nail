@@ -97,7 +97,7 @@
 										<td>{{ $users->register_gadget }}</td>
 									</tr>
 								@endforeach
-								@foreach ($distributor->children as member)		
+								@foreach ($distributor->children as $member)		
 									@foreach ($member->admin_info_user_info as $users)
 										<tr>
 											<td>{{ $users->name }}</td>
