@@ -19,15 +19,15 @@ class PurchaseController extends Controller
     	$orders = ProductPurchasing::where("admin_id", Auth::guard('admin')->user()->id)->count();
     	$account_id = Auth::guard('admin')->user()->account_id;
     	$admin_id = Auth::guard('admin')->user()->id;
-    	$order = str_pad(strval($orders + 1), 6, "1", STR_PAD_LEFT);
+    	$order = str_pad(strval($orders + 1), 6, "2", STR_PAD_LEFT);
     	$order_id = $account_id . "-" . $order;
     	$gadget_price = Product::find(1)->price;
     	$gel_price = Product::find(2)->price;
+    	Log::debug($admin_id);
     	return view('administor/product/purchase', compact('order_id', 'gadget_price', 'gel_price', 'admin_id'));
     }
 
     public function receive(Request $request){
-
 
     	$order_id = $request->input('OrderID');
 
@@ -72,6 +72,9 @@ class PurchaseController extends Controller
 	    	$admin = $response[8];
 	    	$admin = explode("=", $admin);
 	    	$admin = $admin[1];
+
+	    	Log::debug($response[8]);
+	    	Log::debug($admin);
 
 	    	$device = explode("device", $client_field1[0]);
 	    	$device_amount = $device[0];
@@ -153,6 +156,6 @@ class PurchaseController extends Controller
     }
 
     public function result(){
-
+    	return view('administor/product/result');
     }
 }
