@@ -122,7 +122,7 @@ class PurchaseController extends Controller
     	}else if($status == "TRANSFERRED"){
     		$products = ProductPurchasing::where('order_id', $order_id)->get();
     		foreach ($products as $product) { 
-    			$p = ProductPurchasing::find($product);
+    			$p = ProductPurchasing::find($product->id);
     			$p->product_purchasing_division_id = "1";
     			$p->save();
 
@@ -151,7 +151,7 @@ class PurchaseController extends Controller
     	}else if($status == "EXPIRED"){
     		$products = ProductPurchasing::where('order_id', $order_id)->get();
     		foreach ($products as $product) { 
-    			$p = ProductPurchasing::find($product);
+    			$p = ProductPurchasing::find($product->id);
     			$p->product_purchasing_division_id = "3";
     			$p->save();
     		}
