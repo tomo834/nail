@@ -126,7 +126,7 @@ class PurchaseController extends Controller
     			$p->product_purchasing_division_id = "1";
     			$p->save();
 
-    			$parents = Node::where("shop", $p->id)->getAncestors()->pluck('id')->toArray(); // [1, 2, 3]
+    			$parents = Node::where("shop", $p->id)->first()->getAncestors()->pluck('id')->toArray(); // [1, 2, 3]
     			foreach ($parents as $parent) {
     				if ($parent == "1") {
     					$p_incentive = new ProductIncentive();
