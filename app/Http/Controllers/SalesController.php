@@ -48,6 +48,7 @@ class SalesController extends Controller
             $nodes = Node::where("shop", $admin->id)->with('admin_info')->get()->toTree();
         }
 
+
         return view('administor/sales', compact("nodes"));
     }
 

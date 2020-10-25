@@ -4,11 +4,18 @@
 <div class="container">
     <div class="row">
     	<div class="col-12">
-    		<div class="d-flex admin__action">
-    			
-    		</div>
 
 			<h3>店舗売上</h3>
+
+    		<div class="mb-3">
+				<form action="incentive" method="GET">
+				    <input type="date" name="from" placeholder="yyyy-mm-dd">
+				        <span class="mx-3 text-grey">~</span>
+				    <input type="date" name="until" placeholder="yyyy-mm-dd">
+				    <button type="submit">検索</button>
+				</form>
+			</div>
+
 
 			<div class="table-responsible">
 				<table class="table table-hover text-nowrap">
@@ -36,9 +43,9 @@
 							@endif
 						</td>
 						<td>{{ $node->admin_info->name }}</td>
-						<td class="incentive">{{ $node->admin_info->incentive_info->sum("incentive") }}</td>
-						<td class="p_incentive">{{ $node->admin_info->product_incentive_info->sum("incentive") }}</td>
-						<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive"))  +  intval($node->admin_info->product_incentive_info->sum("incentive")) }}</td>
+						<td class="incentive">{{ $node->admin_info->incentive_info->sum("incentive") }}円</td>
+						<td class="p_incentive">{{ $node->admin_info->product_incentive_info->sum("incentive") }}円</td>
+						<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive"))  +  intval($node->admin_info->product_incentive_info->sum("incentive")) }}円</td>
 					</tr>
 
 						@foreach ($node->children as $agency)
@@ -56,9 +63,9 @@
 								@endif
 							</td>
 							<td>{{ $agency->admin_info->name }}</td>
-							<td class="incentive">{{ $agency->admin_info->incentive_info->sum("incentive") }}</td>
-							<td class="p_incentive">{{ $agency->admin_info->product_incentive_info->sum("incentive") }}</td>
-							<td class="total">{{ intval($agency->admin_info->incentive_info->sum("incentive")) + intval($agency->admin_info->product_incentive_info->sum("incentive")) }}</td>
+							<td class="incentive">{{ $agency->admin_info->incentive_info->sum("incentive") }}円</td>
+							<td class="p_incentive">{{ $agency->admin_info->product_incentive_info->sum("incentive") }}円</td>
+							<td class="total">{{ intval($agency->admin_info->incentive_info->whereBetween("receive", "2020-10-1", "2020-10-12"])->sum("incentive")) + intval($agency->admin_info->product_incentive_info->whereBetween("receive", "2020-10-1", "2020-10-12"])->sum("incentive")) }}円</td>
 							</tr>
 							@foreach ($agency->children as $distributor)
 							<tr>
@@ -75,9 +82,9 @@
 									@endif
 								</td>
 								<td>{{ $distributor->admin_info->name }}</td>
-								<td class="incentive">{{ $distributor->admin_info->incentive_info->sum("incentive") }}</td>
-								<td class="p_incentive">{{ $distributor->admin_info->product_incentive_info->sum("incentive") }}</td>
-								<td class="total">{{ intval($distributor->admin_info->incentive_info->sum("incentive"))  + intval($distributor->admin_info->product_incentive_info->sum("incentive")) }}</td>
+								<td class="incentive">{{ $distributor->admin_info->incentive_info->sum("incentive") }}円</td>
+								<td class="p_incentive">{{ $distributor->admin_info->product_incentive_info->sum("incentive") }}円</td>
+								<td class="total">{{ intval($distributor->admin_info->incentive_info->sum("incentive"))  + intval($distributor->admin_info->product_incentive_info->sum("incentive")) }}円</td>
 							</tr>
 								@foreach ($distributor->children as $member)
 								<tr>
@@ -94,9 +101,9 @@
 										@endif
 									</td>
 									<td>{{ $member->admin_info->name }}</td>
-									<td class="incentive">{{ $member->admin_info->incentive_info->sum("incentive") }}</td>
-									<td class="p_incentive">{{ $member->admin_info->product_incentive_info->sum("incentive") }}</td>
-									<td class="total">{{ intval($member->admin_info->incentive_info->sum("incentive")) + intval($member->admin_info->product_incentive_info->sum("incentive"))}}</td>
+									<td class="incentive">{{ $member->admin_info->incentive_info->sum("incentive") }}円</td>
+									<td class="p_incentive">{{ $member->admin_info->product_incentive_info->sum("incentive") }}円</td>
+									<td class="total">{{ intval($member->admin_info->incentive_info->sum("incentive")) + intval($member->admin_info->product_incentive_info->sum("incentive"))}}円</td>
 								</tr>
 								@endforeach
 							@endforeach
