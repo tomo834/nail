@@ -108,6 +108,23 @@ class AdminController extends Controller
         $new_admin = new Admin();
         $new_admin->name = $request->name;
         $new_admin->email = $request->email;
+        
+        $new_admin->account_holder = $request->account_holder;
+        $new_admin->bank_name = $request->bank_name;
+        $new_admin->branch_name = $request->branch_name;
+        $new_admin->bank_code = $request->bank_code;
+        $new_admin->branch_code = $request->branch_code;
+        $new_admin->account_type = $request->account_type;
+        $new_admin->account_number = $request->account_number;
+        $new_admin->incentive = $request->incentive;
+        $new_admin->need_file = $request->need_file;
+        $new_admin->historical_matters = $request->historical_matters;
+        $new_admin->seal_certificate = $request->seal_certificate;
+        $new_admin->passbook = $request->passbook;
+        $new_admin->residents_card = $request->residents_card;
+        $new_admin->other = $request->other;
+        $new_admin->mailing_date = $request->mailing_date;
+
         $new_admin->type = $type;
         $new_admin->account_id = $account_id;
         $p = str_random(12);
