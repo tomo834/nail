@@ -60,7 +60,59 @@
 						<th>デバイス登録日</th>
 					</tr>
 
-					
+					@foreach ($nodes as $node)
+						@foreach ($node->admin_info->user_info as $users)
+							<tr>
+								<td>{{ $users->name }}</td>
+								<td>{{ $users->admin->name }}</td>
+								<td>{{ $users->admin->type }}</td>
+								<td>{{ $users->admin->email }}</td>
+								<td>{{ $users->downloads }}</td>
+								<td>{{ $users->gadget_id }}</td>
+								<td>{{ $users->register_gadget }}</td>
+							</tr>
+						@endforeach
+						@foreach ($node->children as $agency)
+
+							@foreach ($agency->admin_info_user_info as $users)
+								<tr>
+									<td>{{ $users->name }}</td>
+									<td>{{ $users->admin->name }}</td>
+									<td>{{ $users->admin->type }}</td>
+									<td>{{ $users->admin->email }}</td>
+									<td>{{ $users->downloads }}</td>
+									<td>{{ $users->gadget_id }}</td>
+									<td>{{ $users->register_gadget }}</td>
+								</tr>
+							@endforeach
+							@foreach($agency->children as $distributor)
+								@foreach ($distribtuor->admin_info_user_info as $users)
+									<tr>
+										<td>{{ $users->name }}</td>
+										<td>{{ $users->admin->name }}</td>
+										<td>{{ $users->admin->type }}</td>
+										<td>{{ $users->admin->email }}</td>
+										<td>{{ $users->downloads }}</td>
+										<td>{{ $users->gadget_id }}</td>
+										<td>{{ $users->register_gadget }}</td>
+									</tr>
+								@endforeach
+								@foreach ($distributor->children as member)		
+									@foreach ($member->admin_info_user_info as $users)
+										<tr>
+											<td>{{ $users->name }}</td>
+											<td>{{ $users->admin->name }}</td>
+											<td>{{ $users->admin->type }}</td>
+											<td>{{ $users->admin->email }}</td>
+											<td>{{ $users->downloads }}</td>
+											<td>{{ $users->gadget_id }}</td>
+											<td>{{ $users->register_gadget }}</td>
+										</tr>
+									@endforeach
+								@endforeach
+							@endforeach
+						@endforeach
+					@endforeach
 				</table>
 			</div>
     	</div>

@@ -49,7 +49,7 @@
                         <li class="pr-3">{{ Auth::guard('admin')->user()->name }} : (加盟店)</li>
                         <li class="pr-3"><a href="{{ url('admin/user/create') }}">ユーザー登録</a></li>
                         <li class="pr-3"><a href="{{ url('/admin/device') }}">デバイス</a></li>
-                        <li class="pr-3"><a href="{{ url('admin/product/purchase_history') }}">製品購入履歴</a></li>
+                        <li class="pr-3"><a href="{{ url('admin/product/purchase/history') }}">製品購入履歴</a></li>
                         <li class="pr-3"><a href="{{ url('/admin/product/purchase') }}">仕入れ</a></li>
                     @endif
                     <li class="pr-3"><a href="{{ url('admin/') }}">店舗一覧</a></li>
