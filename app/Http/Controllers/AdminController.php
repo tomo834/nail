@@ -152,8 +152,6 @@ class AdminController extends Controller
         $rootTree->addChild($childTree);
         $childTree->save();
 
-        
-
         // Mail::send(new RegisterMail($p));
 
         return view('administor.index', compact("nodes"));        

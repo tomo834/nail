@@ -114,6 +114,7 @@ Route::group(['prefix' => 'admin'], function () {
   });
 
     Route::post('product/receive', "PurchaseController@receive")->name('receive');
+    Route::post('product/result', "PurchaseController@result")->name('result');
 
 });
 

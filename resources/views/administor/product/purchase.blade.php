@@ -53,7 +53,7 @@
 				 <input type="hidden" name="Amount" size="27" id="myamount" value="10">
 				 <input type="hidden" name="DateTime" id="mydate">
 				 <input type="hidden" name="ShopPassString" size="32" id="myinfo">
-				 <input type="hidden" name="RetURL" value="http://133.125.45.49/admin">
+				 <input type="hidden" name="RetURL" value="http://133.125.45.49/admin/product/result">
 				 <input type="hidden" name="UseVirtualaccount" value="1">
 				 <input type="hidden" name="VaTradeDays" value="7">
 				 <input type="hidden" name="VaTradeClientMailAddress" value="stomo834@gmail.com">

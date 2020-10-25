@@ -97,26 +97,53 @@ class PurchaseController extends Controller
 
     		$p_d = new ProductPurchasing();
     		$p_d->admin_id = $admin;
-    		$p_d->product_purchasing_id = $p_deatil_d->id;
+    		$p_d->product_purchasing_detail_id = $p_deatil_d->id;
     		$p_d->product_purchasing_division_id = "TRADING";
     		$p_d->order_id = $order_id;
     		$p_d->save();
 
     		$p_c = new ProductPurchasing();
     		$p_c->admin_id = $admin;
-    		$p_c->product_purchasing_id = $p_deatil_c->id;
+    		$p_c->product_purchasing_detail_id = $p_deatil_c->id;
     		$p_c->product_purchasing_division_id = "TRADING";
     		$p_c->order_id = $order_id;
     		$p_c->save();
 
     	}else if($status == "TRANSFERRED"){
-    		// $products = ProductPurchasing::where('order_id', $client_field2)->get();
-    		// foreach ($products as $product) { 
-    		// 	$p = ProductPurchasing::find($product)
-    		// }
+    		$products = ProductPurchasing::where('order_id', $order_id)->get();
+    		foreach ($products as $product) { 
+    			$p = ProductPurchasing::find($product);
+    			$p->product_purchasing_division_id = "TRANSFERRED";
+    			$p->update();
+
+    			$parents = Node::where("shop", $p->id)->getAncestors()->pluck('id')->toArray(); // [1, 2, 3]
+    			foreach ($parents as $parent) {
+    				if ($parent == "1") {
+    					$p_incentive = new ProductIncentive();
+    					$p_incentive->product_purchasing_id = $p->id;
+    					$p_incentive->incentive = $p->product_purchasing_detail->total;
+    					$p_incentive->admin_id = $parent->shop;
+    					$p_incentive->receive = date("Y-m-d H:i:s");
+    				}
+    				else {
+    					$p_incentive = new ProductIncentive();
+    					$p_incentive->product_purchasing_id = $p->id;
+    					$incentive = $p->product_purchasing_detail->total * 0.01 * $parent->shop->incentive;
+    					$p_incentive->incentive = $incentive;
+    					$p_incentive->admin_id = $parent->shop;
+    					$p_incentive->receive = date("Y-m-d H:i:s");
+    				}
+    				
+    			}
+    		}
 
     	}else if($status == "EXPIRED"){
-
+    		$products = ProductPurchasing::where('order_id', $order_id)->get();
+    		foreach ($products as $product) { 
+    			$p = ProductPurchasing::find($product);
+    			$p->product_purchasing_division_id = "EXPIRED";
+    			$p->update();
+    		}
     	}
 
     	curl_close($ch);
