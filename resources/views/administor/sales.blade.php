@@ -58,7 +58,7 @@
 							<td>{{ $node->admin_info->name }}</td>
 							<td class="incentive">{{ $node->admin_info->incentive_info->sum("incentive") }}</td>
 							<td class="p_incentive">{{ $node->admin_info->product_incentive_info->sum("incentive") }}</td>
-							<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive"))  intval($node->admin_info->product_incentive_info->sum("incentive")) }}</td>
+							<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive")) + intval($node->admin_info->product_incentive_info->sum("incentive")) }}</td>
 							</tr>
 							@foreach ($agency->children as $distributor)
 							<tr>
