@@ -19,7 +19,7 @@ class PurchaseController extends Controller
     	$orders = ProductPurchasing::where("admin_id", Auth::guard('admin')->user()->id)->count();
     	$account_id = Auth::guard('admin')->user()->account_id;
     	$admin_id = Auth::guard('admin')->user()->id;
-    	$order = str_pad(strval($orders + 1), 6, "0", STR_PAD_LEFT);
+    	$order = str_pad(strval($orders + 1), 6, "1", STR_PAD_LEFT);
     	$order_id = $account_id . "-" . $order;
     	$gadget_price = Product::find(1)->price;
     	$gel_price = Product::find(2)->price;
@@ -149,6 +149,10 @@ class PurchaseController extends Controller
     	curl_close($ch);
 
     	return 0;
+
+    }
+
+    public function result(){
 
     }
 }

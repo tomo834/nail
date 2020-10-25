@@ -32,7 +32,7 @@
 			</tr>
 		</table>
 
-		<button class="btn" id="modal" data-toggle="modal" data-target="#confirmPurchase">購入確認</button>
+		<button class="btn btn-primary" id="modal" data-toggle="modal" data-target="#confirmPurchase">購入確認</button>
 
 		<div class="modal fade" id="confirmPurchase" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
@@ -60,8 +60,8 @@
 				 <input type="hidden" name="ClientField1" id="client_field1" value="device2-coat3">
 				 <input type="hidden" name="ClientField2" id="client_field2" value="{{ $order_id }}">
 				 <input type="hidden" name="ClientField3" id="client_field3" value="{{ $admin_id }}">
-				 <button type="button" class="btn" data-dismiss="modal">キャンセル</button>
-				 <button type="button" class="btn" id="myButton">購入</button>
+				 <button type="button" class="btn btn-danger" data-dismiss="modal">キャンセル</button>
+				 <button type="button" class="btn btn-primary" id="myButton">購入</button>
 				</form>
 		      </div>
 		    </div>
