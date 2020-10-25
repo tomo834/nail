@@ -60,54 +60,7 @@
 						<th>デバイス登録日</th>
 					</tr>
 
-					@foreach ($nodes as $node)
-						@foreach ($node->admin_info->user_info as $users_info)
-							@foreach ($users_info as $users)
-							<tr>
-								<td>{{ $users->name }}</td>
-								<td>{{ $users->admin->name }}</td>
-								<td>{{ $users->admin->type }}</td>
-								<td>{{ $users->admin->email }}</td>
-								<td>{{ $users->downloads }}</td>
-								<td>{{ $users->gadget_id }}</td>
-								<td>{{ $users->register_gadget }}</td>
-							</tr>
-								@foreach ($users as $user)
-								<tr>
-									<td>{{ $user->name }}</td>
-									<td>{{ $user->admin->name }}</td>
-									<td>{{ $user->admin->type }}</td>
-									<td>{{ $user->admin->email }}</td>
-									<td>{{ $user->downloads }}</td>
-									<td>{{ $user->gadget_id }}</td>
-									<td>{{ $user->register_gadget }}</td>
-								</tr>
-									@foreach ($user as $use)
-									<tr>
-										<td>{{ $use->name }}</td>
-										<td>{{ $use->admin->name }}</td>
-										<td>{{ $use->admin->type }}</td>
-										<td>{{ $use->admin->email }}</td>
-										<td>{{ $use->downloads }}</td>
-										<td>{{ $use->gadget_id }}</td>
-										<td>{{ $use->register_gadget }}</td>
-									</tr>
-										@foreach ($use as $us)
-										<tr>
-											<td>{{ $us->name }}</td>
-											<td>{{ $us->admin->name }}</td>
-											<td>{{ $us->admin->type }}</td>
-											<td>{{ $us->admin->email }}</td>
-											<td>{{ $us->downloads }}</td>
-											<td>{{ $us->gadget_id }}</td>
-											<td>{{ $us->register_gadget }}</td>
-										</tr>
-										@endforeach
-									@endforeach
-								@endforeach
-							@endforeach
-						@endforeach
-					@endforeach
+					
 				</table>
 			</div>
     	</div>
