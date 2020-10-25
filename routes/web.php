@@ -75,6 +75,7 @@ Route::group(['middleware' => 'admin' ,'as' => 'admin.' ], function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin'], function () {
+
   Route::get('/login', 'AdminAuth\LoginController@showLoginForm')->name('login');
   Route::post('/login', 'AdminAuth\LoginController@login');
   Route::get('/logout', 'AdminAuth\LoginController@logout')->name('logout');
@@ -93,14 +94,16 @@ Route::group(['prefix' => 'admin'], function () {
   Route::group(['middleware' => 'admin' ,'as' => 'admin.' ], function () {
 
     Route::get('', "AdminController@index");
-    Route::get('sales', "SalesController@sales");
+    Route::get('sales', "SaleController@sales");
+    Route::get('incentive', "SalesController@incentive");
     Route::get('user/list', "AdminUserController@userList");
 
     Route::resource('user', "UserController");
     Route::resource('device', "DeviceController");
 
     Route::get('product/purchase', "PurchaseController@index")->name('purchase');
-    Route::get('product/sales', "ProductSaleController@sales");
+    Route::get('product/purchase/history', "PurchaseController@history")->name('purchase_history');
+    Route::get('product/incentive', "ProductSaleController@incentive");
 
     //excel
     Route::get('file-import-export', 'AdminExcelController@fileImportExport');

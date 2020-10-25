@@ -27,6 +27,11 @@ class PurchaseController extends Controller
     	return view('administor/product/purchase', compact('order_id', 'gadget_price', 'gel_price', 'admin_id'));
     }
 
+    public function history(){
+    	$histories = ProductPurchasing::where("admin_id", Auth::guard('admin')->user()->id);
+    	return view('administor/product/purchase_history', compact("histories"));
+    }
+
     public function receive(Request $request){
 
     	$order_id = $request->input('OrderID');

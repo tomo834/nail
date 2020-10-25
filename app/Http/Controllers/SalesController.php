@@ -56,7 +56,7 @@ class SalesController extends Controller
     	return view('member/sales', compact("incentives"));
     }
 
-    public function sales(Request $request){
+    public function incentive(Request $request){
 
     	$admin = Admin::find(Auth::guard('admin')->user()->id);
 
@@ -80,7 +80,7 @@ class SalesController extends Controller
         Log::debug($admin);
         Log::debug($incentives);
 
-    	return view('administor/sales', compact('incentives'));
+    	return view('administor/incentive', compact('incentives'));
     }
 
 }
