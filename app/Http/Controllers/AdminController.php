@@ -133,7 +133,7 @@ class AdminController extends Controller
         $new_admin->need_file = $request->need_file;
         $new_admin->historical_matters = $request->historical_matters;
         $new_admin->seal_certificate = $request->seal_certificate;
-        $new_admin->passbook = $passbook;
+        $new_admin->passbook = $request->passbook;
         $new_admin->residents_card = $request->residents_card;
         $new_admin->other = $request->other;
         $new_admin->mailing_date = $requst->mailing_date;

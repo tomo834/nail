@@ -96,7 +96,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                            <label for="phone" class="col-md-4 control-label">住所</label>
+                            <label for="phone" class="col-md-4 control-label">電話番号</label>
 
                             <div class="col-md-6">
                                 <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" autofocus>
@@ -110,7 +110,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('fax') ? ' has-error' : '' }}">
-                            <label for="fax" class="col-md-4 control-label">住所</label>
+                            <label for="fax" class="col-md-4 control-label">FAX</label>
 
                             <div class="col-md-6">
                                 <input id="fax" type="text" class="form-control" name="fax" value="{{ old('fax') }}" autofocus>
@@ -124,7 +124,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('cellphone') ? ' has-error' : '' }}">
-                            <label for="cellphone" class="col-md-4 control-label">住所</label>
+                            <label for="cellphone" class="col-md-4 control-label">携帯番号</label>
 
                             <div class="col-md-6">
                                 <input id="cellphone" type="text" class="form-control" name="cellphone" value="{{ old('cellphone') }}" autofocus>
@@ -138,7 +138,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('account_holder') ? ' has-error' : '' }}">
-                            <label for="account_holder" class="col-md-4 control-label">住所</label>
+                            <label for="account_holder" class="col-md-4 control-label">口座名義</label>
 
                             <div class="col-md-6">
                                 <input id="account_holder" type="text" class="form-control" name="account_holder" value="{{ old('account_holder') }}" autofocus>
@@ -152,7 +152,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('bank_name') ? ' has-error' : '' }}">
-                            <label for="bank_name" class="col-md-4 control-label">住所</label>
+                            <label for="bank_name" class="col-md-4 control-label">銀行名</label>
 
                             <div class="col-md-6">
                                 <input id="bank_name" type="text" class="form-control" name="bank_name" value="{{ old('bank_name') }}" autofocus>
@@ -166,7 +166,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('branch_name') ? ' has-error' : '' }}">
-                            <label for="branch_name" class="col-md-4 control-label">住所</label>
+                            <label for="branch_name" class="col-md-4 control-label">支店名</label>
 
                             <div class="col-md-6">
                                 <input id="branch_name" type="text" class="form-control" name="branch_name" value="{{ old('branch_name') }}" autofocus>
@@ -180,7 +180,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('bank_code') ? ' has-error' : '' }}">
-                            <label for="bank_code" class="col-md-4 control-label">住所</label>
+                            <label for="bank_code" class="col-md-4 control-label">金融コード</label>
 
                             <div class="col-md-6">
                                 <input id="bank_code" type="text" class="form-control" name="bank_code" value="{{ old('bank_code') }}" autofocus>
@@ -194,7 +194,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('branch_code') ? ' has-error' : '' }}">
-                            <label for="branch_code" class="col-md-4 control-label">住所</label>
+                            <label for="branch_code" class="col-md-4 control-label">支店コード</label>
 
                             <div class="col-md-6">
                                 <input id="branch_code" type="text" class="form-control" name="branch_code" value="{{ old('branch_code') }}" autofocus>
@@ -208,7 +208,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('account_type') ? ' has-error' : '' }}">
-                            <label for="account_type" class="col-md-4 control-label">住所</label>
+                            <label for="account_type" class="col-md-4 control-label">口座種類</label>
 
                             <div class="col-md-6">
                                 <input id="account_type" type="text" class="form-control" name="account_type" value="{{ old('account_type') }}" autofocus>
@@ -222,7 +222,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('account_number') ? ' has-error' : '' }}">
-                            <label for="account_number" class="col-md-4 control-label">住所</label>
+                            <label for="account_number" class="col-md-4 control-label">口座番号</label>
 
                             <div class="col-md-6">
                                 <input id="account_number" type="text" class="form-control" name="account_number" value="{{ old('account_number') }}" autofocus>
@@ -236,7 +236,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('incentive') ? ' has-error' : '' }}">
-                            <label for="incentive" class="col-md-4 control-label">住所</label>
+                            <label for="incentive" class="col-md-4 control-label">インセンティブ</label>
 
                             <div class="col-md-6">
                                 <input id="incentive" type="number" class="form-control" name="incentive" value="{{ old('incentive') }}" autofocus>
@@ -250,7 +250,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('need_file') ? ' has-error' : '' }}">
-                            <label for="need_file" class="col-md-4 control-label">住所</label>
+                            <label for="need_file" class="col-md-4 control-label">必要書類</label>
 
                             <div class="col-md-6">
                                 <input id="need_file" type="text" class="form-control" name="need_file" value="{{ old('need_file') }}" autofocus>
@@ -264,7 +264,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('historical_matters') ? ' has-error' : '' }}">
-                            <label for="historical_matters" class="col-md-4 control-label">住所</label>
+                            <label for="historical_matters" class="col-md-4 control-label">履歴事項証明書</label>
 
                             <div class="col-md-6">
                                 <input id="historical_matters" type="text" class="form-control" name="historical_matters" value="{{ old('historical_matters') }}" autofocus>
@@ -278,7 +278,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('seal_certificate') ? ' has-error' : '' }}">
-                            <label for="seal_certificate" class="col-md-4 control-label">住所</label>
+                            <label for="seal_certificate" class="col-md-4 control-label">印鑑証明</label>
 
                             <div class="col-md-6">
                                 <input id="seal_certificate" type="text" class="form-control" name="seal_certificate" value="{{ old('seal_certificate') }}" autofocus>
@@ -292,7 +292,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('passbook') ? ' has-error' : '' }}">
-                            <label for="passbook" class="col-md-4 control-label">住所</label>
+                            <label for="passbook" class="col-md-4 control-label">振り込み通帳画像</label>
 
                             <div class="col-md-6">
                                 <input id="passbook" type="text" class="form-control" name="passbook" value="{{ old('passbook') }}" autofocus>
@@ -306,7 +306,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('residents_card') ? ' has-error' : '' }}">
-                            <label for="residents_card" class="col-md-4 control-label">住所</label>
+                            <label for="residents_card" class="col-md-4 control-label">住所表</label>
 
                             <div class="col-md-6">
                                 <input id="residents_card" type="text" class="form-control" name="residents_card" value="{{ old('residents_card') }}" autofocus>
@@ -319,8 +319,22 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('other') ? ' has-error' : '' }}">
+                            <label for="other" class="col-md-4 control-label">開発業届出、確定申告、営業許可書</label>
+
+                            <div class="col-md-6">
+                                <input id="other" type="text" class="form-control" name="other" value="{{ old('other') }}" autofocus>
+
+                                @if ($errors->has('other'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('other') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('mailing_date') ? ' has-error' : '' }}">
-                            <label for="mailing_date" class="col-md-4 control-label">住所</label>
+                            <label for="mailing_date" class="col-md-4 control-label">申込通知お知らせ</label>
 
                             <div class="col-md-6">
                                 <input id="mailing_date" type="text" class="form-control" name="mailing_date" value="{{ old('mailing_date') }}" autofocus>
@@ -334,7 +348,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('homepage') ? ' has-error' : '' }}">
-                            <label for="homepage" class="col-md-4 control-label">住所</label>
+                            <label for="homepage" class="col-md-4 control-label">ホームページ</label>
 
                             <div class="col-md-6">
                                 <input id="homepage" type="text" class="form-control" name="homepage" value="{{ old('homepage') }}" autofocus>
@@ -349,7 +363,7 @@
 
 
                         <div class="form-group{{ $errors->has('shop_zip_code') ? ' has-error' : '' }}">
-                            <label for="shop_zip_code" class="col-md-4 control-label">住所</label>
+                            <label for="shop_zip_code" class="col-md-4 control-label">店舗郵便番号</label>
 
                             <div class="col-md-6">
                                 <input id="shop_zip_code" type="text" class="form-control" name="shop_zip_code" value="{{ old('shop_zip_code') }}" autofocus>
@@ -364,7 +378,7 @@
 
 
                         <div class="form-group{{ $errors->has('shop_address') ? ' has-error' : '' }}">
-                            <label for="shop_address" class="col-md-4 control-label">住所</label>
+                            <label for="shop_address" class="col-md-4 control-label">店舗住所</label>
 
                             <div class="col-md-6">
                                 <input id="shop_address" type="text" class="form-control" name="shop_address" value="{{ old('shop_address') }}" autofocus>
@@ -379,7 +393,7 @@
 
 
                         <div class="form-group{{ $errors->has('request') ? ' has-error' : '' }}">
-                            <label for="request" class="col-md-4 control-label">住所</label>
+                            <label for="request" class="col-md-4 control-label">申込日</label>
 
                             <div class="col-md-6">
                                 <input id="request" type="text" class="form-control" name="request" value="{{ old('request') }}" autofocus>
@@ -393,7 +407,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('shop_phone') ? ' has-error' : '' }}">
-                            <label for="shop_phone" class="col-md-4 control-label">住所</label>
+                            <label for="shop_phone" class="col-md-4 control-label">店舗電話番号</label>
 
                             <div class="col-md-6">
                                 <input id="shop_phone" type="text" class="form-control" name="shop_phone" value="{{ old('shop_phone') }}" autofocus>
@@ -407,7 +421,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('shop_open') ? ' has-error' : '' }}">
-                            <label for="shop_open" class="col-md-4 control-label">住所</label>
+                            <label for="shop_open" class="col-md-4 control-label">営業時間</label>
 
                             <div class="col-md-6">
                                 <input id="shop_open" type="text" class="form-control" name="shop_open" value="{{ old('shop_open') }}" autofocus>
@@ -422,7 +436,7 @@
 
 
                         <div class="form-group{{ $errors->has('has_nailist') ? ' has-error' : '' }}">
-                            <label for="has_nailist" class="col-md-4 control-label">住所</label>
+                            <label for="has_nailist" class="col-md-4 control-label">ネイリストの有無</label>
 
                             <div class="col-md-6">
                                 <input id="has_nailist" type="text" class="form-control" name="has_nailist" value="{{ old('has_nailist') }}" autofocus>
