@@ -136,7 +136,7 @@ class AdminController extends Controller
         $new_admin->passbook = $request->passbook;
         $new_admin->residents_card = $request->residents_card;
         $new_admin->other = $request->other;
-        $new_admin->mailing_date = $requst->mailing_date;
+        $new_admin->mailing_date = $request->mailing_date;
         $new_admin->type = $type;
         $new_admin->account_id = $account_id;
         $p = str_random(12);
