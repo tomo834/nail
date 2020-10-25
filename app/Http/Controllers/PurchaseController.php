@@ -19,11 +19,12 @@ class PurchaseController extends Controller
     	$orders = ProductPurchasing::where("admin_id", Auth::guard('admin')->user()->id)->count();
     	$account_id = Auth::guard('admin')->user()->account_id;
     	$admin_id = Auth::guard('admin')->user()->id;
-    	$order = str_pad(strval($orders + 1), 6, "3", STR_PAD_LEFT);
-    	$order_id = $account_id . "-" . $order;
+    	$order = str_pad(strval($orders + 1), 6, "4", STR_PAD_LEFT);
+    	$order_id =  $account_id . "-" . $order;
     	$gadget_price = Product::find(1)->price;
     	$gel_price = Product::find(2)->price;
     	Log::debug($admin_id);
+    	Log::debug(date("ymd");
     	return view('administor/product/purchase', compact('order_id', 'gadget_price', 'gel_price', 'admin_id'));
     }
 
@@ -130,14 +131,14 @@ class PurchaseController extends Controller
     				if ($parent == "1") {
     					$p_incentive = new ProductIncentive();
     					$p_incentive->product_purchasing_id = $p->id;
-    					$p_incentive->incentive = $p->product_purchasing_detail->total;
+    					$p_incentive->incentive = $p->price;
     					$p_incentive->admin_id = $parent->shop;
     					$p_incentive->receive = date("Y-m-d H:i:s");
     				}
     				else {
     					$p_incentive = new ProductIncentive();
     					$p_incentive->product_purchasing_id = $p->id;
-    					$incentive = $p->product_purchasing_detail->total * 0.01 * $parent->shop->incentive;
+    					$incentive = $p->price * 0.01 * $parent->shop->incentive;
     					$p_incentive->incentive = $incentive;
     					$p_incentive->admin_id = $parent->shop;
     					$p_incentive->receive = date("Y-m-d H:i:s");
