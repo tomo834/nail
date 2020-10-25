@@ -19,7 +19,7 @@ class PurchaseController extends Controller
     	$orders = ProductPurchasing::where("admin_id", Auth::guard('admin')->user()->id)->count();
     	$account_id = Auth::guard('admin')->user()->account_id;
     	$admin_id = Auth::guard('admin')->user()->id;
-    	$order = str_pad(strval($orders + 1), 6, "2", STR_PAD_LEFT);
+    	$order = str_pad(strval($orders + 1), 6, "3", STR_PAD_LEFT);
     	$order_id = $account_id . "-" . $order;
     	$gadget_price = Product::find(1)->price;
     	$gel_price = Product::find(2)->price;
@@ -101,14 +101,14 @@ class PurchaseController extends Controller
     		$p_d = new ProductPurchasing();
     		$p_d->admin_id = $admin;
     		$p_d->product_purchasing_detail_id = $p_deatil_d->id;
-    		$p_d->product_purchasing_division_id = "TRADING";
+    		$p_d->product_purchasing_division_id = "2";
     		$p_d->order_id = $order_id;
     		$p_d->save();
 
     		$p_c = new ProductPurchasing();
     		$p_c->admin_id = $admin;
     		$p_c->product_purchasing_detail_id = $p_deatil_c->id;
-    		$p_c->product_purchasing_division_id = "TRADING";
+    		$p_c->product_purchasing_division_id = "2";
     		$p_c->order_id = $order_id;
     		$p_c->save();
 
@@ -116,7 +116,7 @@ class PurchaseController extends Controller
     		$products = ProductPurchasing::where('order_id', $order_id)->get();
     		foreach ($products as $product) { 
     			$p = ProductPurchasing::find($product);
-    			$p->product_purchasing_division_id = "TRANSFERRED";
+    			$p->product_purchasing_division_id = "1";
     			$p->update();
 
     			$parents = Node::where("shop", $p->id)->getAncestors()->pluck('id')->toArray(); // [1, 2, 3]
@@ -144,7 +144,7 @@ class PurchaseController extends Controller
     		$products = ProductPurchasing::where('order_id', $order_id)->get();
     		foreach ($products as $product) { 
     			$p = ProductPurchasing::find($product);
-    			$p->product_purchasing_division_id = "EXPIRED";
+    			$p->product_purchasing_division_id = "3";
     			$p->update();
     		}
     	}
