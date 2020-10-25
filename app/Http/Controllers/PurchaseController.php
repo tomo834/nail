@@ -84,33 +84,39 @@ class PurchaseController extends Controller
 	    	$coat_amount = $coat[0];
 	    	$coat_total = $coat[1];
 
-    		$p_deatil_d = new ProductPurchasingDetail();
-    		$p_deatil_d->product_id = "1";
-    		$p_deatil_d->amount = $device_amount;
-    		$p_deatil_d->total = $device_total;
-    		$p_deatil_d->purchase = date("Y-m-d H:i:s");
-    		$p_deatil_d->save();
+	    	if ($device_amount > 0) {
+	    		$p_deatil_d = new ProductPurchasingDetail();
+	    		$p_deatil_d->product_id = "1";
+	    		$p_deatil_d->amount = $device_amount;
+	    		$p_deatil_d->total = $device_total;
+	    		$p_deatil_d->purchase = date("Y-m-d H:i:s");
+	    		$p_deatil_d->save();
 
-    		$p_deatil_c = new ProductPurchasingDetail();
-    		$p_deatil_c->product_id = "2";
-    		$p_deatil_c->amount = $coat_amount;
-    		$p_deatil_c->total = $coat_total;
-    		$p_deatil_c->purchase = date("Y-m-d H:i:s");
-    		$p_deatil_c->save();
+	    		$p_d = new ProductPurchasing();
+	    		$p_d->admin_id = $admin;
+	    		$p_d->product_purchasing_detail_id = $p_deatil_d->id;
+	    		$p_d->product_purchasing_division_id = "2";
+	    		$p_d->order_id = $order_id;
+	    		$p_d->price = $device_total;
+	    		$p_d->save();
+	    	}
 
-    		$p_d = new ProductPurchasing();
-    		$p_d->admin_id = $admin;
-    		$p_d->product_purchasing_detail_id = $p_deatil_d->id;
-    		$p_d->product_purchasing_division_id = "2";
-    		$p_d->order_id = $order_id;
-    		$p_d->save();
+	    	if ($coat_amount > 0) {
+	    		$p_deatil_c = new ProductPurchasingDetail();
+	    		$p_deatil_c->product_id = "2";
+	    		$p_deatil_c->amount = $coat_amount;
+	    		$p_deatil_c->total = $coat_total;
+	    		$p_deatil_c->purchase = date("Y-m-d H:i:s");
+	    		$p_deatil_c->save();
 
-    		$p_c = new ProductPurchasing();
-    		$p_c->admin_id = $admin;
-    		$p_c->product_purchasing_detail_id = $p_deatil_c->id;
-    		$p_c->product_purchasing_division_id = "2";
-    		$p_c->order_id = $order_id;
-    		$p_c->save();
+	    		$p_c = new ProductPurchasing();
+	    		$p_c->admin_id = $admin;
+	    		$p_c->product_purchasing_detail_id = $p_deatil_c->id;
+	    		$p_c->product_purchasing_division_id = "2";
+	    		$p_c->order_id = $order_id;
+	    		$p_c->price = $coat_total;
+	    		$p_c->save();
+	    	}
 
     	}else if($status == "TRANSFERRED"){
     		$products = ProductPurchasing::where('order_id', $order_id)->get();
@@ -136,7 +142,6 @@ class PurchaseController extends Controller
     					$p_incentive->admin_id = $parent->shop;
     					$p_incentive->receive = date("Y-m-d H:i:s");
     				}
-    				
     			}
     		}
 
