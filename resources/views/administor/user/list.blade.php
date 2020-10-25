@@ -86,7 +86,7 @@
 								</tr>
 							@endforeach
 							@foreach($agency->children as $distributor)
-								@foreach ($distribuor->admin_info->user_info as $users)
+								@foreach ($distributor->admin_info->user_info as $users)
 									<tr>
 										<td>{{ $users->name }}</td>
 										<td>{{ $users->admin->name }}</td>
@@ -97,7 +97,7 @@
 										<td>{{ $users->register_gadget }}</td>
 									</tr>
 								@endforeach
-								@foreach ($distribtor->children as $member)		
+								@foreach ($distributor->children as $member)		
 									@foreach ($member->admin_info->user_info as $users)
 										<tr>
 											<td>{{ $users->name }}</td>
