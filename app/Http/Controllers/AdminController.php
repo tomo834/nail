@@ -26,7 +26,6 @@ class AdminController extends Controller
         //admin
         if ($admin->type == "99"){
             $nodes = Node::find(1)->with('admin_info')->get()->toTree();
-            $admins = Admin::all();
         }
         //agency
         else if ($admin->type == "1"){
@@ -35,15 +34,13 @@ class AdminController extends Controller
         //distributor
         else if ($admin->type == "2"){
             $nodes = Node::where("shop", $admin->id)->with('admin_info')->get()->toTree();
-            $admins = [];
         }
         //member
         else if ($admin->type == "3"){
             $nodes = Node::where("shop", $admin->id)->with('admin_info')->get()->toTree();
-            $admins = [];
         }
 
-        return view('administor.index', compact('admins','nodes'));
+        return view('administor.index', compact('nodes'));
     }
 
     /**
@@ -72,7 +69,6 @@ class AdminController extends Controller
         //admin
         if ($admin->type == "99"){
             $nodes = Node::find(1)->with('admin_info')->get()->toTree();
-            $admins = Admin::all();
             $account_id = str_pad(strval($under + 1), 3, "0", STR_PAD_LEFT);
             $account_id = str_pad($account_id, 10, "0", STR_PAD_RIGHT);
             $type = "1";
@@ -89,7 +85,6 @@ class AdminController extends Controller
         //distributor
         else if ($admin->type == "2"){
             $nodes = Node::where("shop", $admin->id)->with('admin_info')->get()->toTree();
-            $admins = [];
             $account_id_left = substr($admin->account_id, 0, 5);
             $account_id_right = str_pad(strval($under + 1), 5, "0", STR_PAD_LEFT);
             $account_id = $account_id_left . $account_id_right;
@@ -161,7 +156,7 @@ class AdminController extends Controller
 
         // Mail::send(new RegisterMail($p));
 
-        return view('administor.index', compact('admins', "nodes"));        
+        return view('administor.index', compact("nodes"));        
     }
 
     /**
