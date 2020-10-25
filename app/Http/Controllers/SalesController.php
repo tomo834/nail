@@ -48,8 +48,19 @@ class SalesController extends Controller
             $nodes = Node::where("shop", $admin->id)->with('admin_info')->get()->toTree();
         }
 
+        if (!empty($request['from']) && !empty($request['until'])) {
+            //ハッシュタグの選択された20xx/xx/xx ~ 20xx/xx/xxのレポート情報を取得
+            // $incentives = Admin::find(160)->with("incentive_info")getDate($request['from'], $request['until']);
+            $from = $request['from'];
+            $until = $request['until'];
 
-        return view('administor/sales', compact("nodes"));
+        } else {
+            //リクエストデータがなければそのままで表示
+            $from = "2000-1-1";
+            $until = "3000-1-1";
+        }
+
+        return view('administor/sales', compact("nodes", "from", "until"));
     }
 
 }
