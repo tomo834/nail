@@ -22,7 +22,7 @@ class ProductSaleController extends Controller
 
         } else {
             //リクエストデータがなければそのままで表示
-            $incentives = Admin::find($admin->id)->product_incentive_info->paginate(50);
+            $incentives = Admin::find($admin->id)->product_incentive_info()->paginate(50);
         }
 
     	Log::debug($incentives);
