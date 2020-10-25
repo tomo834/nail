@@ -94,7 +94,7 @@ Route::group(['prefix' => 'admin'], function () {
   Route::group(['middleware' => 'admin' ,'as' => 'admin.' ], function () {
 
     Route::get('', "AdminController@index");
-    Route::get('sales', "SaleController@sales");
+    Route::get('sales', "SalesController@sales");
     Route::get('incentive', "SalesController@incentive");
     Route::get('user/list', "AdminUserController@userList");
 

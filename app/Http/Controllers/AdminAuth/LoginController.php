@@ -21,8 +21,8 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers, LogsoutGuard {
-        LogsoutGuard::logout insteadof AuthenticatesUsers;
+    use AuthenticatesUsers {
+        logout as performLogout;
     }
 
     /**
@@ -62,7 +62,8 @@ class LoginController extends Controller
         return Auth::guard('admin');
     }
 
-    protected function loggedOut(Request $request){
-        return redirect(route('admin.login'));
+    protected function logout(Request $request){
+        $this->performLogout($request);
+        return redirect('admin/login');
     }
 }
