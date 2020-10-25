@@ -124,7 +124,7 @@ class PurchaseController extends Controller
     		foreach ($products as $product) { 
     			$p = ProductPurchasing::find($product);
     			$p->product_purchasing_division_id = "1";
-    			$p->update();
+    			$p->save();
 
     			$parents = Node::where("shop", $p->id)->getAncestors()->pluck('id')->toArray(); // [1, 2, 3]
     			foreach ($parents as $parent) {
@@ -134,6 +134,7 @@ class PurchaseController extends Controller
     					$p_incentive->incentive = $p->price;
     					$p_incentive->admin_id = $parent->shop;
     					$p_incentive->receive = date("Y-m-d H:i:s");
+    					$p_incentive->save();
     				}
     				else {
     					$p_incentive = new ProductIncentive();
@@ -142,6 +143,7 @@ class PurchaseController extends Controller
     					$p_incentive->incentive = $incentive;
     					$p_incentive->admin_id = $parent->shop;
     					$p_incentive->receive = date("Y-m-d H:i:s");
+    					$p_incentive->save();
     				}
     			}
     		}
@@ -151,7 +153,7 @@ class PurchaseController extends Controller
     		foreach ($products as $product) { 
     			$p = ProductPurchasing::find($product);
     			$p->product_purchasing_division_id = "3";
-    			$p->update();
+    			$p->save();
     		}
     	}
 
