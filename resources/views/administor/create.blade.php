@@ -337,7 +337,7 @@
                             <label for="mailing_date" class="col-md-4 control-label">申込通知お知らせ</label>
 
                             <div class="col-md-6">
-                                <input id="mailing_date" type="text" class="form-control" name="mailing_date" value="{{ old('mailing_date') }}" autofocus>
+                                <input id="mailing_date" type="date" class="form-control" name="mailing_date" value="{{ old('mailing_date') }}" autofocus>
 
                                 @if ($errors->has('mailing_date'))
                                     <span class="help-block">
@@ -396,7 +396,7 @@
                             <label for="request" class="col-md-4 control-label">申込日</label>
 
                             <div class="col-md-6">
-                                <input id="request" type="text" class="form-control" name="request" value="{{ old('request') }}" autofocus>
+                                <input id="request" type="date" class="form-control" name="request" value="{{ old('request') }}" autofocus>
 
                                 @if ($errors->has('request'))
                                     <span class="help-block">

@@ -102,6 +102,8 @@ class AdminController extends Controller
             'incentive' => 'required|integer'
         ]);
 
+        Log::debug($request);
+
 
         $new_admin = new Admin();
         $new_admin->name = $request->name;
