@@ -19,12 +19,11 @@ class PurchaseController extends Controller
     	$orders = ProductPurchasing::where("admin_id", Auth::guard('admin')->user()->id)->count();
     	$account_id = Auth::guard('admin')->user()->account_id;
     	$admin_id = Auth::guard('admin')->user()->id;
-    	$order = str_pad(strval($orders + 1), 6, "4", STR_PAD_LEFT);
+    	$order = str_pad(strval($orders + 1), 6, "5", STR_PAD_LEFT);
     	$order_id =  $account_id . "-" . $order;
     	$gadget_price = Product::find(1)->price;
     	$gel_price = Product::find(2)->price;
     	Log::debug($admin_id);
-    	Log::debug(date("ymd"));
     	return view('administor/product/purchase', compact('order_id', 'gadget_price', 'gel_price', 'admin_id'));
     }
 
@@ -126,7 +125,7 @@ class PurchaseController extends Controller
     			$p->product_purchasing_division_id = "1";
     			$p->save();
 
-    			$parents = Node::where("shop", $p->id)->first()->getAncestors()->pluck('id')->toArray(); // [1, 2, 3]
+    			$parents = Node::where("shop", $p->admin_id)->first()->getAncestors()->pluck('id')->toArray(); // [1, 2, 3]
     			foreach ($parents as $parent) {
     				if ($parent == "1") {
     					$p_incentive = new ProductIncentive();
