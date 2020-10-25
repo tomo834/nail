@@ -123,7 +123,7 @@ class AdminController extends Controller
 
         
 
-        //Mail::send(new RegisterMail($p));
+        Mail::send(new RegisterMail($p));
 
         return view('administor.index', compact('admins', "nodes"));        
     }
