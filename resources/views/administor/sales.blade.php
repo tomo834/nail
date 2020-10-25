@@ -65,7 +65,7 @@
 							<td>{{ $agency->admin_info->name }}</td>
 							<td class="incentive">{{ $agency->admin_info->incentive_info->sum("incentive") }}円</td>
 							<td class="p_incentive">{{ $agency->admin_info->product_incentive_info->sum("incentive") }}円</td>
-							<td class="total">{{ intval($agency->admin_info->incentive_info->whereBetween("receive", "2020-10-1", "2020-10-12")->sum("incentive")) + intval($agency->admin_info->product_incentive_info->whereBetween("receive", "2020-10-1", "2020-10-12")->sum("incentive")) }}円</td>
+							<td class="total">{{ intval($agency->admin_info->incentive_info->whereBetween("receive", ["2020-10-1", "2020-10-12"])->sum("incentive")) + intval($agency->admin_info->product_incentive_info->whereBetween("receive", ["2020-10-1", "2020-10-12"])->sum("incentive")) }}円</td>
 							</tr>
 							@foreach ($agency->children as $distributor)
 							<tr>
