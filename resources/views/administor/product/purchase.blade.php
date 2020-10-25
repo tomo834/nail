@@ -59,7 +59,7 @@
 				 <input type="hidden" name="VaTradeClientMailAddress" value="stomo834@gmail.com">
 				 <input type="hidden" name="ClientField1" id="client_field1" value="device2-coat3">
 				 <input type="hidden" name="ClientField2" id="client_field2" value="{{ $order_id }}">
-				 <input type="hidden" name="ClientField2" id="client_field2" value="{{ $admin_id }}">
+				 <input type="hidden" name="ClientField3" id="client_field3" value="{{ $admin_id }}">
 				 <button type="button" class="btn" data-dismiss="modal">キャンセル</button>
 				 <button type="button" class="btn" id="myButton">購入</button>
 				</form>
