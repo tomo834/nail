@@ -7,7 +7,7 @@
     		<h2>ネイル売上</h2>
 
     		<div class="mb-3">
-				<form action="sales" method="GET">
+				<form action="incentive" method="GET">
 				    <input type="date" name="from" placeholder="yyyy-mm-dd">
 				        <span class="mx-3 text-grey">~</span>
 				    <input type="date" name="until" placeholder="yyyy-mm-dd">

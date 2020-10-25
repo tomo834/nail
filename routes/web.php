@@ -25,53 +25,6 @@ Route::group(['prefix' => 'api'], function () {
 
 Route::resource('news','NewsController');
 
-Route::group(['middleware' => 'admin' ,'as' => 'admin.' ], function () {
-
-  Route::group(['prefix' => 'administor'], function () {
-    //excel
-    Route::get('file-import-export', 'AdminExcelController@fileImportExport');
-    Route::post('file-import', 'AdminExcelController@fileImport')->name('file-import');
-    Route::get('file-export', 'AdminExcelController@fileExport')->name('file-export');
-
-    Route::get('file-allimports', 'AllAdminController@fileImport');
-    Route::post('file-allimport', 'AllAdminController@fileAllImport'); 
-    
-  });
-
-  Route::group(['prefix' => 'agency'], function () {
-    //excel
-    Route::get('file-import-export', 'AgencyExcelController@fileImportExport');
-    Route::post('file-import', 'AgencyExcelController@fileImport')->name('file-import');
-    Route::post('file-import', 'AgencyExcelController@fileImport')->name('file-import');
-    Route::get('file-export', 'AgencyExcelController@fileExport')->name('file-export'); 
-
-  });
-
-  Route::group(['prefix' => 'distributor'], function () {
-    //excel
-    Route::get('file-import-export', 'DistributorExcelController@fileImportExport');
-    Route::post('file-import', 'DistributorExcelController@fileImport')->name('file-import');
-    Route::post('file-import', 'DistributorExcelController@fileImport')->name('file-import');
-    Route::get('file-export', 'DistributorExcelController@fileExport')->name('file-export'); 
-
-    Route::get('sales',"SalesController@distributor");
-
-  });
-
-  Route::group(['prefix' => 'member'], function () {
-    Route::get('sales/register', "SalesRegisterController@index")->name('register');
-    Route::get('purchase', "PurchaseController@index")->name('purchase');
-    Route::get('sales',"SalesController@member");
-
-  });
-
-  
-});
-
-
-
-
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin'], function () {
@@ -116,8 +69,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('',"AdminController");
   });
 
-    Route::post('product/receive', "PurchaseController@receive")->name('receive');
-    Route::post('product/result', "PurchaseController@result")->name('result');
+  Route::post('product/receive', "PurchaseController@receive")->name('receive');
+  Route::post('product/result', "PurchaseController@result")->name('result');
 
 });
 

@@ -35,9 +35,10 @@
 								運営
 							@endif
 						</td>
+						<td>{{ $node->admin_info->name }}</td>
 						<td class="incentive">{{ $node->admin_info->incentive_info->sum("incentive") }}</td>
 						<td class="p_incentive">{{ $node->admin_info->product_incentive_info->sum("incentive") }}</td>
-						<td class="total"></td>
+						<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive")) }} + {{ intval($node->admin_info->product_incentive_info->sum("incentive")) }}</td>
 					</tr>
 
 						@foreach ($node->children as $agency)
@@ -54,9 +55,10 @@
 									運営
 								@endif
 							</td>
+							<td>{{ $node->admin_info->name }}</td>
 							<td class="incentive">{{ $node->admin_info->incentive_info->sum("incentive") }}</td>
 							<td class="p_incentive">{{ $node->admin_info->product_incentive_info->sum("incentive") }}</td>
-							<td class="total">intval($node->admin_info->incentive_info->sum("incentive")) + intval($node->admin_info->product_incentive_info->sum("incentive"))</td>
+							<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive"))  intval($node->admin_info->product_incentive_info->sum("incentive")) }}</td>
 							</tr>
 							@foreach ($agency->children as $distributor)
 							<tr>
@@ -72,9 +74,10 @@
 										運営
 									@endif
 								</td>
+								<td>{{ $node->admin_info->name }}</td>
 								<td class="incentive">{{ $node->admin_info->incentive_info->sum("incentive") }}</td>
 								<td class="p_incentive">{{ $node->admin_info->product_incentive_info->sum("incentive") }}</td>
-								<td class="total">intval($node->admin_info->incentive_info->sum("incentive")) + intval($node->admin_info->product_incentive_info->sum("incentive"))</td>
+								<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive")) }} + {{intval($node->admin_info->product_incentive_info->sum("incentive")) }}</td>
 							</tr>
 								@foreach ($distributor->children as $member)
 								<tr>
@@ -90,9 +93,10 @@
 											運営
 										@endif
 									</td>
+									<td>{{ $node->admin_info->name }}</td>
 									<td class="incentive">{{ $node->admin_info->incentive_info->sum("incentive") }}</td>
 									<td class="p_incentive">{{ $node->admin_info->product_incentive_info->sum("incentive") }}</td>
-									<td class="total">intval($node->admin_info->incentive_info->sum("incentive")) + intval($node->admin_info->product_incentive_info->sum("incentive"))</td>
+									<td class="total">{{ intval($node->admin_info->incentive_info->sum("incentive")) }} + {{intval($node->admin_info->product_incentive_info->sum("incentive"))}}</td>
 								</tr>
 								@endforeach
 							@endforeach
