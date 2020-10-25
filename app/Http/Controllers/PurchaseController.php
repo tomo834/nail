@@ -24,7 +24,7 @@ class PurchaseController extends Controller
     	$gadget_price = Product::find(1)->price;
     	$gel_price = Product::find(2)->price;
     	Log::debug($admin_id);
-    	Log::debug(date("ymd");
+    	Log::debug(date("ymd"));
     	return view('administor/product/purchase', compact('order_id', 'gadget_price', 'gel_price', 'admin_id'));
     }
 
