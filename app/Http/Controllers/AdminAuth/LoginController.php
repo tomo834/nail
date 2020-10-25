@@ -60,4 +60,8 @@ class LoginController extends Controller
     {
         return Auth::guard('admin');
     }
+
+    protected function loggedOut(Request $request){
+        return redirect(route('admin.login'));
+    }
 }

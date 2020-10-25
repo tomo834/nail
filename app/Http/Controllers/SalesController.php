@@ -83,4 +83,24 @@ class SalesController extends Controller
     	return view('administor/incentive', compact('incentives'));
     }
 
+    public function sales(){
+
+        $admin = Auth::guard('admin')->user();
+
+        //admin
+        if ($admin->type == "99"){
+            $nodes = Node::find(1)->with('admin_info')->get()->toTree();
+        }
+        //agency
+        else if ($admin->type == "1"){
+            $nodes = Node::where("shop", $admin->id)->with('admin_info')->get()->toTree();
+        }
+        //distributor
+        else if ($admin->type == "2"){
+            $nodes = Node::where("shop", $admin->id)->with('admin_info')->get()->toTree();
+        }
+
+        return view('administor/sales', compact("nodes"));
+    }
+
 }
