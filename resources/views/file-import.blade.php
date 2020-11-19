@@ -25,11 +25,11 @@
                         <th>住所</th>
                         <th>携帯電話番号</th>
                         <th>電話番号</th>
-                        <th>FAX</th>
                         <th>店舗名</th>
                         <th>責任者</th>
                         <th>誕生日</th>
                         <th class="text-danger">メールアドレス</th>
+                        <th>通知用メールアドレス</th>
                         <th>店舗郵便番号</th>
                         <th>店舗住所</th>
                         <th>店舗電話番号</th>
@@ -44,13 +44,9 @@
                         <th>口座タイプ</th>
                         <th>口座番号</th>
                         <th class="text-danger">インセンティブ</th>
-                        <th>必要書類</th>
                         <th>履歴事項証明</th>
-                        <th>印鑑証明</th>
                         <th>振り込み通帳画像</th>
-                        <th>住民票</th>
                         <th>開発業、確定申告書、営業許可書</th>
-                        <th>登録通知書お知らせ</th>
                     </tr>
                     <tr>
                         <td>日付</td>
@@ -62,9 +58,9 @@
                         <td>文字列</td>
                         <td>文字列</td>
                         <td>文字列</td>
-                        <td>文字列</td>
                         <td>日付</td>
                         <td class="text-danger">必須、重複不可</td>
+                        <td>文字列</td>
                         <td>文字列</td>
                         <td>文字列</td>
                         <td>文字列</td>
@@ -82,10 +78,6 @@
                         <td>○もしくは空欄</td>
                         <td>○もしくは空欄</td>
                         <td>○もしくは空欄</td>
-                        <td>○もしくは空欄</td>
-                        <td>○もしくは空欄</td>
-                        <td>○もしくは空欄</td>
-                        <td>日付</td>
                     </tr>
                 </table>
             </div>
@@ -129,7 +121,7 @@
 </div>
 @endsection
 
-<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+@section('javascript-footer')
 <script type="text/javascript">
     $(function(){
         $("#customFile").on("change",function(){
@@ -138,5 +130,6 @@
         })
     })
 </script>
+@endsection
 
 

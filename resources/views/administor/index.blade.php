@@ -44,7 +44,6 @@
 						<th>住所</th>
 						<th>携帯</th>
 						<th>電話番号</th>
-						<th>FAX</th>
 						<th>店舗名</th>
 						<th>責任者</th>
 						<th>店舗郵便番号</th>
@@ -61,13 +60,9 @@
 						<th>口座タイプ</th>
 						<th>口座番号</th>
 						<th>インセンティブ</th>
-						<th>必要書類</th>
 						<th>履歴事項証明</th>
-						<th>印鑑証明</th>
 						<th>振り込み通帳画像</th>
-						<th>住民票</th>
 						<th>開発業、確定申告書、営業許可書</th>
-						<th>登録通知</th>
 					</tr>
 
 					@foreach ($nodes as $node)
@@ -92,7 +87,6 @@
 						<td>{{ $node->admin_info->address }}</td>
 						<td>{{ $node->admin_info->cellphone }}</td>
 						<td>{{ $node->admin_info->phone }}</td>
-						<td>{{ $node->admin_info->fax }}</td>
 						<td>{{ $node->admin_info->name }}</td>
 						<td>{{ $node->admin_info->shop_pic }}</td>
 						<td>{{ $node->admin_info->shop_zip_code }}</td>
@@ -109,13 +103,9 @@
 						<td>{{ $node->admin_info->account_type }}</td>
 						<td>{{ $node->admin_info->account_number }}</td>
 						<td>{{ $node->admin_info->incentive }}%</td>
-						<td>{{ $node->admin_info->need_file }}</td>
 						<td>{{ $node->admin_info->historical_matters }}</td>
-						<td>{{ $node->admin_info->seal_certficate }}</td>
 						<td>{{ $node->admin_info->passbook }}</td>
-						<td>{{ $node->admin_info->residents_card }}</td>
 						<td>{{ $node->admin_info->other }}</td>
-						<td>{{ $node->admin_info->mailing_date }}</td>
 					</tr>
 
 						@foreach ($node->children as $agency)
@@ -140,7 +130,6 @@
 							<td>{{ $agency->admin_info->address }}</td>
 							<td>{{ $agency->admin_info->cellphone }}</td>
 							<td>{{ $agency->admin_info->phone }}</td>
-							<td>{{ $agency->admin_info->fax }}</td>
 							<td>{{ $agency->admin_info->name }}</td>
 							<td>{{ $agency->admin_info->shop_pic }}</td>
 							<td>{{ $agency->admin_info->shop_zip_code }}</td>
@@ -157,13 +146,9 @@
 							<td>{{ $agency->admin_info->account_type }}</td>
 							<td>{{ $agency->admin_info->account_number }}</td>
 							<td>{{ $agency->admin_info->incentive }}%</td>
-							<td>{{ $agency->admin_info->need_file }}</td>
 							<td>{{ $agency->admin_info->historical_matters }}</td>
-							<td>{{ $agency->admin_info->seal_certificate }}</td>
 							<td>{{ $agency->admin_info->passbook }}</td>
-							<td>{{ $agency->admin_info->residents_card }}</td>
 							<td>{{ $agency->admin_info->other }}</td>
-							<td>{{ $agency->admin_info->mailing_date }}</td>
 						</tr>
 							@foreach ($agency->children as $distributor)
 							<tr>
@@ -187,7 +172,6 @@
 								<td>{{ $distributor->admin_info->address }}</td>
 								<td>{{ $distributor->admin_info->cellphone }}</td>
 								<td>{{ $distributor->admin_info->phone }}</td>
-								<td>{{ $distributor->admin_info->fax }}</td>
 								<td>{{ $distributor->admin_info->name }}</td>
 								<td>{{ $distributor->admin_info->shop_pic }}</td>
 								<td>{{ $distributor->admin_info->shop_zip_code }}</td>
@@ -204,13 +188,9 @@
 								<td>{{ $distributor->admin_info->account_type }}</td>
 								<td>{{ $distributor->admin_info->account_number }}</td>
 								<td>{{ $distributor->admin_info->incentive }}%</td>
-								<td>{{ $distributor->admin_info->need_file }}</td>
 								<td>{{ $distributor->admin_info->historical_matters }}</td>
-								<td>{{ $distributor->admin_info->seal_certficate }}</td>
 								<td>{{ $distributor->admin_info->passbook }}</td>
-								<td>{{ $distributor->admin_info->residents_card }}</td>
 								<td>{{ $distributor->admin_info->other }}</td>
-								<td>{{ $distributor->admin_info->mailing_date }}</td>
 							</tr>
 								@foreach ($distributor->children as $member)
 								<tr>
@@ -234,7 +214,6 @@
 									<td>{{ $member->admin_info->address }}</td>
 									<td>{{ $member->admin_info->cellphone }}</td>
 									<td>{{ $member->admin_info->phone }}</td>
-									<td>{{ $member->admin_info->fax }}</td>
 									<td>{{ $member->admin_info->name }}</td>
 									<td>{{ $member->admin_info->shop_pic }}</td>
 									<td>{{ $member->admin_info->shop_zip_code }}</td>
@@ -251,13 +230,9 @@
 									<td>{{ $member->admin_info->account_type }}</td>
 									<td>{{ $member->admin_info->account_number }}</td>
 									<td>{{ $member->admin_info->incentive }}%</td>
-									<td>{{ $member->admin_info->need_file }}</td>
 									<td>{{ $member->admin_info->historical_matters }}</td>
-									<td>{{ $member->admin_info->seal_certficate }}</td>
 									<td>{{ $member->admin_info->passbook }}</td>
-									<td>{{ $member->admin_info->residents_card }}</td>
 									<td>{{ $member->admin_info->other }}</td>
-									<td>{{ $member->admin_info->mailing_date }}</td>
 								</tr>
 								@endforeach
 							@endforeach
@@ -297,7 +272,11 @@
 		overflow-x: scroll;
 	}
 </style>
-<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+
+
+@endsection
+
+@section('javascript-footer')
 <script type="text/javascript">
 	$(function(){
 		$('.admin__tree__btn').click(function(){
@@ -311,6 +290,4 @@
 		});
 	});
 </script>
-
-
 @endsection

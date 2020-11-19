@@ -35,31 +35,89 @@
                 @else
                     @if (Auth::guard('admin')->user()->type === "99")
                         <li class="pr-3">{{ Auth::guard('admin')->user()->name }} : (運営)</li>
-                        <li class="pr-3"><a href="{{ url('admin/create') }}">代理店登録</a></li>
-                        <li class="pr-3"><a href="{{ url('admin/file-import-export') }}">代理店インポート</a></li>
                         @elseif (Auth::guard('admin')->user()->type === "1")
                         <li class="pr-3">{{ Auth::guard('admin')->user()->name }} : (代理店)</li>
-                        <li class="pr-3"><a href="{{ url('admin/create') }}">特約店登録</a></li>
-                        <li class="pr-3"><a href="{{ url('admin/file-import-export') }}">特約店インポート</a></li>
                         @elseif (Auth::guard('admin')->user()->type === "2")
                         <li class="pr-3">{{ Auth::guard('admin')->user()->name }} : (特約店)</li>
-                        <li class="pr-3"><a href="{{ url('admin/create') }}">加盟店登録</a></li>
-                        <li class="pr-3"><a href="{{ url('admin/file-import-export') }}">加盟店インポート</a></li>
                         @elseif (Auth::guard('admin')->user()->type === "3")
                         <li class="pr-3">{{ Auth::guard('admin')->user()->name }} : (加盟店)</li>
-                        <li class="pr-3"><a href="{{ url('admin/user/create') }}">ユーザー登録</a></li>
-                        <li class="pr-3"><a href="{{ url('/admin/device') }}">デバイス</a></li>
-                        <li class="pr-3"><a href="{{ url('admin/product/purchase/history') }}">製品購入履歴</a></li>
-                        <li class="pr-3"><a href="{{ url('/admin/product/purchase') }}">仕入れ</a></li>
                     @endif
-                    <li class="pr-3"><a href="{{ url('admin/') }}">店舗一覧</a></li>
-                    <li class="pr-3"><a href="{{ url('admin/user/list') }}">ユーザー一覧</a></li>
-                    @if (Auth::guard('admin')->user()->type !== "3")
-                        <li class="pr-3"><a href="{{ url('admin/sales') }}">店舗売上</a></li>
-                        <li class="pr-3"><a href="{{ url('admin/product/incentive') }}">製品報酬</a></li>
-                    @endif
-                    <li class="pr-3"><a href="{{ url('admin/incentive') }}">ネイル報酬</a></li>
+
+
+                    <li class="pr-3">
+                        <div class="dropdown">
+                          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            店舗登録
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @if (Auth::guard('admin')->user()->type === "99")
+                                <a class="dropdown-item" href="{{ url('admin/create') }}">代理店登録</a>
+                                <a class="dropdown-item" href="{{ url('admin/file-import-export') }}">代理店インポート</a>
+                            @elseif (Auth::guard('admin')->user()->type === "1")
+                                <a class="dropdown-item" href="{{ url('admin/create') }}">特約店登録</a>
+                                <a class="dropdown-item" href="{{ url('admin/file-import-export') }}">特約店インポート</a>
+                            @elseif (Auth::guard('admin')->user()->type === "2")
+                                <a class="dropdown-item" href="{{ url('admin/create') }}">加盟店登録</a>
+                                <a class="dropdown-item" href="{{ url('admin/file-import-export') }}">加盟店インポート</a>
+                            @endif
+                          </div>
+                        </div>
+                    </li>
+
+                    <li class="pr-3">
+                        <div class="dropdown">
+                          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            登録情報変更
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ url('admin/password/edit') }}">パスワード変更</a>
+                            <a class="dropdown-item" href="{{ url('admin/change-profile/edit') }}">店舗情報変更</a>
+                          </div>
+                        </div>
+                    </li>
+
+                    <li class="pr-3">
+                        <div class="dropdown">
+                          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            店舗情報
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ url('admin/') }}">店舗一覧</a>
+                            <a class="dropdown-item" href="{{ url('admin/user/list') }}">ユーザー一覧</a>
+                          </div>
+                        </div>
+                    </li>
+
+                    
+
+
+                    <li class="pr-3">
+                        <div class="dropdown">
+                          <button class="btn dropdown-toggle" type="button" id="check_sales" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if (Auth::guard('admin')->user()->type !== "3")
+                                売上確認
+                            @else
+                                aaa
+                            @endif  
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="check_sales">
+                            @if (Auth::guard('admin')->user()->type !== "3")
+                                <a class="dropdown-item" href="{{ url('admin/sales') }}">店舗売上</a>
+                                <a class="dropdown-item" href="{{ url('admin/product/incentive') }}">製品報酬</a>
+                            @else
+                                <a class="dropdown-item" href="{{ url('admin/user/create') }}">ユーザー登録</a>
+                                <a class="dropdown-item" href="{{ url('/admin/device') }}">デバイス</a>
+                                <a class="dropdown-item" href="{{ url('admin/product/purchase/history') }}">製品購入履歴</a>
+                                <a class="dropdown-item" href="{{ url('/admin/product/purchase') }}">仕入れ</a>
+                            @endif
+
+                            <a class="dropdown-item" href="{{ url('admin/incentive') }}">ネイル報酬</a>
+                          </div>
+                        </div>
+                    </li>
                     <li class="pr-3"><a href="{{ url('/admin/logout') }}">Logout</a></li>
+
+                    
                 @endif
             </ul>
           </div>
@@ -70,8 +128,7 @@
     
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
-    <script src="/js/jquery.md5.js"></script>
+    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     @yield('javascript-footer')
 </body>
 </html>

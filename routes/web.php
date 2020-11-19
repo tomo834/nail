@@ -51,6 +51,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('incentive', "SalesController@incentive");
     Route::get('user/list', "AdminUserController@userList");
 
+    Route::get('change-profile/edit', "AdminController@editProfile");
+    Route::post('change-profile', "AdminController@updateProfile");
+
     Route::resource('user', "UserController");
     Route::resource('device', "DeviceController");
 

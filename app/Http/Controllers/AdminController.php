@@ -94,6 +94,7 @@ class AdminController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:admins',
+            'notification_address' => 'email',
             'incentive' => 'required|integer'
         ]);
 
@@ -104,6 +105,13 @@ class AdminController extends Controller
         $new_admin->name = $request->name;
         $new_admin->email = $request->email;
 
+        if ($request->notification_address == NULL) {
+            $notification_address = $request->email;
+        }else{
+            $notification_address = $request->notification_address;
+        }
+
+        $new_admin->notification_address = $notification_address;
         $new_admin->request = $request->request_date;
         $new_admin->company_name = $request->company_name;
         $new_admin->representative = $request->representative;
@@ -111,7 +119,6 @@ class AdminController extends Controller
         $new_admin->address = $request->address;
         $new_admin->cellphone = $request->cellphone;
         $new_admin->phone = $request->phone;
-        $new_admin->fax = $request->fax;
         $new_admin->shop_name = $request->shop_name;
         $new_admin->shop_pic = $request->shop_pic;
         $new_admin->shop_zip_code = $request->shop_zip_code;
@@ -129,13 +136,9 @@ class AdminController extends Controller
         $new_admin->account_type = $request->account_type;
         $new_admin->account_number = $request->account_number;
         $new_admin->incentive = $request->incentive;
-        $new_admin->need_file = $request->need_file;
         $new_admin->historical_matters = $request->historical_matters;
-        $new_admin->seal_certificate = $request->seal_certificate;
         $new_admin->passbook = $request->passbook;
-        $new_admin->residents_card = $request->residents_card;
         $new_admin->other = $request->other;
-        $new_admin->mailing_date = $request->mailing_date;
 
         $new_admin->type = $type;
         $new_admin->account_id = $account_id;
@@ -152,10 +155,13 @@ class AdminController extends Controller
         $rootTree->addChild($childTree);
         $childTree->save();
 
-        // Mail::send(new RegisterMail($p));
+        $email = $request->email;
 
-        return view('administor.index', compact("nodes"));        
+        Mail::send(new RegisterMail($p, $notification_address, $email, $account_id));
+
+        return view('administor.complete_register');        
     }
+
 
     /**
      * Display the specified resource.
@@ -174,9 +180,21 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit($id)
     {
         //
+    }
+
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    public function editProfile()
+    {
+        $admin = Auth::guard('admin')->user();
+        return view('administor/change_profile', compact("admin"));
     }
 
     /**
@@ -186,9 +204,61 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateProfile(Request $request)
     {
-        //
+        $admin = Auth::guard('admin')->user();
+
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'notification_address' => 'email',
+        ]);
+
+        if ($admin->email !== $request->email){
+            $validatedData = $request->validate([
+                'email' => 'required|email|max:255|unique:admins',
+            ]);
+            $admin->email = $request->email;
+        }
+
+        $admin->name = $request->name;
+
+        if ($request->notification_address == NULL) {
+            $notification_address = $request->email;
+        }else{
+            $notification_address = $request->notification_address;
+        }
+
+        $admin->notification_address = $notification_address;
+        $admin->request = $request->request_date;
+        $admin->company_name = $request->company_name;
+        $admin->representative = $request->representative;
+        $admin->zip_code = $request->zip_code;
+        $admin->address = $request->address;
+        $admin->cellphone = $request->cellphone;
+        $admin->phone = $request->phone;
+        $admin->shop_name = $request->shop_name;
+        $admin->shop_pic = $request->shop_pic;
+        $admin->shop_zip_code = $request->shop_zip_code;
+        $admin->shop_address = $request->shop_address;
+        $admin->shop_phone = $request->shop_phone;
+        $admin->shop_open = $request->shop_open;
+        $admin->has_nailist = $request->has_nailist;
+        $admin->homepage = $request->homepage;
+
+        $admin->account_holder = $request->account_holder;
+        $admin->bank_name = $request->bank_name;
+        $admin->branch_name = $request->branch_name;
+        $admin->bank_code = $request->bank_code;
+        $admin->branch_code = $request->branch_code;
+        $admin->account_type = $request->account_type;
+        $admin->account_number = $request->account_number;
+        $admin->historical_matters = $request->historical_matters;
+        $admin->passbook = $request->passbook;
+        $admin->other = $request->other;
+
+        $admin->update();
+
+        return view('administor.complete_register'); 
     }
 
     /**
