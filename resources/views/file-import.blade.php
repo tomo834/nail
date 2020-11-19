@@ -18,6 +18,7 @@
             <div class=" table-responsible">
                 <table class="table text-nowrap table-bordered">
                     <tr>
+                        <th class="text-danger">アカウントID</th>
                         <th>申込日</th>
                         <th class="text-danger">法人名</th>
                         <th>代表者</th>
@@ -49,6 +50,7 @@
                         <th>開発業、確定申告書、営業許可書</th>
                     </tr>
                     <tr>
+                        <td class="text-danger">重複不可、文字列</td>
                         <td>日付</td>
                         <td class="text-danger">必須　文字列</td>
                         <td>文字列</td>
