@@ -79,6 +79,8 @@ class AdminsImport implements ToCollection, WithStartRow
             
             $p = str_random(12);
 
+            $email = $row[9];
+
             if ($row[10] != ""){
                 $notification_address = $row[10];
             }else{
@@ -159,7 +161,7 @@ class AdminsImport implements ToCollection, WithStartRow
 
 
 
-            //Mail::send(new RegisterMail($p, $notification_address, $email, $account_id));
+            //Mail::send(new RegisterMail($p, $notification_address, $email, $a));
         }
 
     }

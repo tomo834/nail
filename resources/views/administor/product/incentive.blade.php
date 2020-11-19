@@ -48,7 +48,7 @@
     	</div>
     </div>
 </div>
-@endsction
+@endsection
 
 @section("javascript-footer")
 <script type="text/javascript">
