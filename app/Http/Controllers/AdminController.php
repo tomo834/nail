@@ -156,7 +156,7 @@ class AdminController extends Controller
 
         $email = $request->email;
 
-        Mail::send(new RegisterMail($p, $notification_address, $email, $account_id));
+        // Mail::send(new RegisterMail($p, $notification_address, $email, $account_id));
 
         return view('administor.complete_register');        
     }
