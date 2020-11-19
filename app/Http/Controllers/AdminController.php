@@ -94,7 +94,6 @@ class AdminController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:admins',
-            'notification_address' => 'email',
             'incentive' => 'required|integer'
         ]);
 
@@ -210,7 +209,6 @@ class AdminController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'notification_address' => 'email',
         ]);
 
         if ($admin->email !== $request->email){
