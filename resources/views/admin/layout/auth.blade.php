@@ -43,7 +43,7 @@
                         <li class="pr-3">{{ Auth::guard('admin')->user()->name }} : (加盟店)</li>
                     @endif
 
-
+                    @if (Auth::guard('admin')->user()->type !== "3")
                     <li class="pr-3">
                         <div class="dropdown">
                           <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,6 +63,7 @@
                           </div>
                         </div>
                     </li>
+                    @endif
 
                     <li class="pr-3">
                         <div class="dropdown">
@@ -97,7 +98,7 @@
                             @if (Auth::guard('admin')->user()->type !== "3")
                                 売上確認
                             @else
-                                aaa
+                                加盟店メニュー
                             @endif  
                           </button>
                           <div class="dropdown-menu" aria-labelledby="check_sales">

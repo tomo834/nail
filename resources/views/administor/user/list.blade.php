@@ -154,7 +154,10 @@
 		overflow-x: scroll;
 	}
 </style>
-<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+@endsection
+
+@section('javascript-footer')
+
 <script type="text/javascript">
 	$(function(){
 		$('.admin__tree__btn').click(function(){
@@ -171,4 +174,6 @@
 		});
 	});
 </script>
+
 @endsection
+

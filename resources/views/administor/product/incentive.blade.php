@@ -48,8 +48,9 @@
     	</div>
     </div>
 </div>
+@endsction
 
-<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+@section("javascript-footer")
 <script type="text/javascript">
 	$(function(){
 
