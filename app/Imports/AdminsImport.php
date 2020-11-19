@@ -65,8 +65,8 @@ class AdminsImport implements ToCollection, WithStartRow
 
             $data = [
                 "name" => $row[1],
-                "request" => $row[0],
-                "mailing_date" => $row[31],
+                "email" => $row[9],
+                "incentive" =>$row[24]
             ];
             $conditions = [
                 "name" => "required",
@@ -75,8 +75,15 @@ class AdminsImport implements ToCollection, WithStartRow
             ];
             
             Validator::make($data, $conditions)->validate();
+
             
             $p = str_random(12);
+
+            if ($row[10] != ""){
+                $notification_address = $row[10];
+            }else{
+                $notification_address = $row[9];
+            }
 
             if ($row[15] != ""){
                 $nailist = 1;
@@ -84,31 +91,19 @@ class AdminsImport implements ToCollection, WithStartRow
                 $nailist = 0;
             }
 
-            if ($row[26] != ""){
+            if ($row[25] != ""){
                 $historical_matters = 1;
             }else{
                 $historical_matters = 0;
             }
 
-            if ($row[27] != ""){
-                $seal_certificate = 1;
-            }else{
-                $seal_certificate = 0;
-            }
-
-            if ($row[28] != ""){
+            if ($row[26] != ""){
                 $passbook = 1;
             }else{
                 $passbook = 0;
             }
 
-            if ($row[29] != ""){
-                $residents_card = 1;
-            }else{
-                $residents_card = 0;
-            }
-
-            if ($row[30] != ""){
+            if ($row[27] != ""){
                 $other = 1;
             }else{
                 $other = 0;
@@ -120,11 +115,6 @@ class AdminsImport implements ToCollection, WithStartRow
                 $re = $row[0];
             }
 
-            if ($row[31] != ""){
-                $mailing_date = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[31]);
-            }else{
-                $mailing_date = $row[31];
-            }
 
             $admin = Admin::create([
                 'name' => $row[1],
@@ -135,10 +125,10 @@ class AdminsImport implements ToCollection, WithStartRow
                 'address' => $row[4],
                 'cellphone' => $row[5],
                 'phone' => $row[6],
-                'fax' => $row[7],
-                'shop_name' => $row[8],
-                'shop_pic' => $row[9],
-                'email' => $row[10],
+                'shop_name' => $row[7],
+                'shop_pic' => $row[8],
+                'email' => $row[9],
+                'notification_address' => $notification_address,
                 'shop_zip_code' => $row[11],
                 'shop_address' => $row[12],
                 'shop_phone' => $row[13],
@@ -153,13 +143,9 @@ class AdminsImport implements ToCollection, WithStartRow
                 'account_type' => $row[22],
                 'account_number' => $row[23],
                 'incentive' => $row[24],
-                'need_file' => $row[25],
                 'historical_matters' => $historical_matters,
-                'seal_certificate' => $seal_certificate,
                 'passbook' => $passbook,
-                'residents_card' => $residents_card,
                 'other' => $other,
-                'mailing_date' => $mailing_date,
                 'account_id' => $a,
                 'type' => $t,
                 'password' => Hash::make($p)
@@ -170,6 +156,10 @@ class AdminsImport implements ToCollection, WithStartRow
             $childTree->shop = $admin->id;
             $rootTree->addChild($childTree);
             $childTree->save();
+
+
+
+            //Mail::send(new RegisterMail($p, $notification_address, $email, $account_id));
         }
 
     }
