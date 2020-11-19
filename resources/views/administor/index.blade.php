@@ -37,6 +37,7 @@
 						<th>店舗ID</th>
 						<th>店舗タイプ</th>
 						<th>メールアドレス</th>
+						<th>店舗用メールアドレス</th>
 						<th>会社名</th>
 						<th>代表者</th>
 						<th>申込日</th>
@@ -80,6 +81,7 @@
 							@endif
 						</td>
 						<td>{{ $node->admin_info->email}}</td>
+						<td>{{ $node->admin_info->notification_address}}</td>
 						<td>{{ $node->admin_info->company_name }}</td>
 						<td>{{ $node->admin_info->representative }}</td>
 						<td>{{ $node->admin_info->request }}</td>
@@ -123,6 +125,7 @@
 								@endif
 							</td>
 							<td>{{ $agency->admin_info->email}}</td>
+							<td>{{ $node->admin_info->notification_address}}</td>
 							<td>{{ $agency->admin_info->company_name }}</td>
 							<td>{{ $agency->admin_info->representative }}</td>
 							<td>{{ $agency->admin_info->request }}</td>
@@ -165,6 +168,7 @@
 									@endif
 								</td>
 								<td>{{ $distributor->admin_info->email}}</td>
+								<td>{{ $node->admin_info->notification_address}}</td>
 								<td>{{ $distributor->admin_info->company_name }}</td>
 								<td>{{ $distributor->admin_info->representative }}</td>
 								<td>{{ $distributor->admin_info->request }}</td>
@@ -207,6 +211,7 @@
 										@endif
 									</td>
 									<td>{{ $member->admin_info->email}}</td>
+									<td>{{ $node->admin_info->notification_address}}</td>
 									<td>{{ $member->admin_info->company_name }}</td>
 									<td>{{ $member->admin_info->representative }}</td>
 									<td>{{ $member->admin_info->request }}</td>
