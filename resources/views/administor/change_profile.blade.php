@@ -10,6 +10,20 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/change-profile') }}">
                         {{ csrf_field() }}
 
+                        <div class="form-group{{ $errors->has('account_id') ? ' has-error' : '' }}">
+                            <label for="account_id" class="col-sm-2 col-form-label text-danger">アカウントID</label>
+
+                            <div class="col-sm-10">
+                                <input id="account_id" type="text" class="form-control" name="account_id" value="{{ $admin->account_id }}" autofocus=""> 
+
+                                @if ($errors->has('account_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('account_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-sm-2 col-form-label">店舗名</label>
 
@@ -39,7 +53,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('notification_address') ? ' has-error' : '' }}">
-                            <label for="notification_address" class="col-sm-2 col-form-label">通知用メールアドレス</label>
+                            <label for="notification_address" class="col-sm-2 col-form-label">店舗用メールアドレス</label>
 
                             <div class="col-sm-10">
                                 <input id="notification_address" type="email" class="form-control" name="notification_address" value="{{ $admin->notification_address }}" placeholder="空欄の場合、メールアドレスに通知されます">

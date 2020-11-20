@@ -65,36 +65,28 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $admin = Auth::guard('admin')->user();
-        $under = Node::where("shop", $admin->id)->first()->getChildren()->pluck('id')->count();
+        
         //admin
         if ($admin->type == "99"){
             $nodes = Node::find(1)->with('admin_info')->get()->toTree();
-            $account_id = str_pad(strval($under + 1), 3, "0", STR_PAD_LEFT);
-            $account_id = str_pad($account_id, 10, "0", STR_PAD_RIGHT);
             $type = "1";
         }
         //agency
         else if ($admin->type == "1"){
             $nodes = Node::where("shop", $admin->id)->with('admin_info')->get()->toTree();
-            $account_id_left = substr($admin->account_id, 0, 3);
-            $account_id_right = str_pad(strval($under + 1), 2, "0", STR_PAD_LEFT);
-            $account_id_right = str_pad($account_id_right, 7, "0", STR_PAD_RIGHT);
-            $account_id = $account_id_left . $account_id_right;
             $type = "2";
         }
         //distributor
         else if ($admin->type == "2"){
             $nodes = Node::where("shop", $admin->id)->with('admin_info')->get()->toTree();
-            $account_id_left = substr($admin->account_id, 0, 5);
-            $account_id_right = str_pad(strval($under + 1), 5, "0", STR_PAD_LEFT);
-            $account_id = $account_id_left . $account_id_right;
             $type = "3";
         }
 
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:admins',
-            'incentive' => 'required|integer'
+            'incentive' => 'required|integer',
+            'account_id' => 'required|unique:admins|size:10'
         ]);
 
         Log::debug($request);
@@ -103,6 +95,7 @@ class AdminController extends Controller
         $new_admin = new Admin();
         $new_admin->name = $request->name;
         $new_admin->email = $request->email;
+        $new_admin->account_id = $request->account_id;
 
         if ($request->notification_address == NULL) {
             $notification_address = $request->email;
@@ -140,7 +133,6 @@ class AdminController extends Controller
         $new_admin->other = $request->other;
 
         $new_admin->type = $type;
-        $new_admin->account_id = $account_id;
         $p = str_random(12);
         $new_admin->password = Hash::make($p);
 
@@ -155,8 +147,10 @@ class AdminController extends Controller
         $childTree->save();
 
         $email = $request->email;
+        $name = $request->name;
+        $account_id = $request->account_id;
 
-        // Mail::send(new RegisterMail($p, $notification_address, $email, $account_id));
+        // Mail::send(new RegisterMail($p, $notification_address, $email, $account_id, $name));
 
         return view('administor.complete_register');        
     }

@@ -42,33 +42,15 @@ class AdminsImport implements ToCollection, WithStartRow
             $row = $row->toArray();
     
             $now_admin = Auth::guard('admin')->user();
-            $under = Node::where("shop", $admins)->first()->getChildren()->pluck('id')->count();
-
-            //admin
-            if ($now_admin->type == "99"){
-                $a = str_pad(strval($under + 1), 3, "0", STR_PAD_LEFT);
-                $a = str_pad($a, 10, "0", STR_PAD_RIGHT);
-            }
-            //agency
-            else if ($now_admin->type == "1"){
-                $a_left = substr($now_admin->account_id, 0, 3);
-                $a_right = str_pad(strval($under + 1), 2, "0", STR_PAD_LEFT);
-                $a_right = str_pad($a_right, 7, "0", STR_PAD_RIGHT);
-                $a = $a_left . $a_right;
-            }
-            //distributor
-            else if ($now_admin->type == "2"){
-                $a_left = substr($now_admin->account_id, 0, 5);
-                $a_right = str_pad(strval($under + 1), 5, "0", STR_PAD_LEFT);
-                $a = $a_left . $a_right;
-            }
 
             $data = [
-                "name" => $row[1],
-                "email" => $row[9],
-                "incentive" =>$row[24]
+                "account_id" => $row[0],
+                "name" => $row[2],
+                "email" => $row[10],
+                "incentive" =>$row[25]
             ];
             $conditions = [
+                "account_id" => "required|unique:admins|size:10",
                 "name" => "required",
                 "email" => "required|email|unique:admins",
                 "incentive" => "required|integer",
@@ -79,76 +61,76 @@ class AdminsImport implements ToCollection, WithStartRow
             
             $p = str_random(12);
 
-            $email = $row[9];
+            $email = $row[10];
 
-            if ($row[10] != ""){
-                $notification_address = $row[10];
+            if ($row[11] != ""){
+                $notification_address = $row[11];
             }else{
-                $notification_address = $row[9];
+                $notification_address = $row[10];
             }
 
-            if ($row[15] != ""){
+            if ($row[16] != ""){
                 $nailist = 1;
             }else{
                 $nailist = 0;
             }
 
-            if ($row[25] != ""){
+            if ($row[26] != ""){
                 $historical_matters = 1;
             }else{
                 $historical_matters = 0;
             }
 
-            if ($row[26] != ""){
+            if ($row[27] != ""){
                 $passbook = 1;
             }else{
                 $passbook = 0;
             }
 
-            if ($row[27] != ""){
+            if ($row[28] != ""){
                 $other = 1;
             }else{
                 $other = 0;
             }
 
-            if ($row[0] != ""){
-                $re = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[0]);
+            if ($row[1] != ""){
+                $re = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[1]);
             }else{
-                $re = $row[0];
+                $re = $row[1];
             }
 
 
             $admin = Admin::create([
-                'name' => $row[1],
+                'account_id' => $row[0],
+                'name' => $row[2],
                 'request' => $re,
-                'company_name' => $row[1],
-                'representative' => $row[2],
-                'zip_code' => $row[3],
-                'address' => $row[4],
-                'cellphone' => $row[5],
-                'phone' => $row[6],
-                'shop_name' => $row[7],
-                'shop_pic' => $row[8],
-                'email' => $row[9],
+                'company_name' => $row[2],
+                'representative' => $row[3],
+                'zip_code' => $row[4],
+                'address' => $row[5],
+                'cellphone' => $row[6],
+                'phone' => $row[7],
+                'shop_name' => $row[8],
+                'shop_pic' => $row[9],
+                'email' => $row[10],
                 'notification_address' => $notification_address,
-                'shop_zip_code' => $row[11],
-                'shop_address' => $row[12],
-                'shop_phone' => $row[13],
-                'shop_open' => $row[14],
+                'shop_zip_code' => $row[12],
+                'shop_address' => $row[13],
+                'shop_phone' => $row[14],
+                'shop_open' => $row[15],
                 'has_nailist' => $nailist,
-                'homepage' => $row[16],
-                'account_holder' => $row[17],
-                'bank_name' => $row[18],
-                'branch_name' => $row[19],
-                'bank_code' => $row[20],
-                'branch_code' => $row[21],
-                'account_type' => $row[22],
-                'account_number' => $row[23],
-                'incentive' => $row[24],
+                'homepage' => $row[17],
+                'account_holder' => $row[18],
+                'bank_name' => $row[19],
+                'branch_name' => $row[20],
+                'bank_code' => $row[21],
+                'branch_code' => $row[22],
+                'account_type' => $row[23],
+                'account_number' => $row[24],
+                'incentive' => $row[25],
                 'historical_matters' => $historical_matters,
                 'passbook' => $passbook,
                 'other' => $other,
-                'account_id' => $a,
                 'type' => $t,
                 'password' => Hash::make($p)
             ]);
