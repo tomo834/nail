@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12">
             <h2 class="mb-4">店舗インポート</h2>
-            <p>Excelフォーマット</p>
+            <p>Excel,CSVフォーマット</p>
 
 
             @if (Auth::guard('admin')->user()->type === "99")

@@ -23,15 +23,13 @@ class AdminExcelController extends Controller
     */
     public function fileImport(Request $request) 
     {
-    	$request->validate([
+        $request->validate([
             'file' => 'required'
         ]);
         Excel::import(new AdminsImport, request()->file('file'));
         
-
         return back()->withStatus('インポートが完了しました。');
     }
-    
 
     /**
     * @return \Illuminate\Support\Collection

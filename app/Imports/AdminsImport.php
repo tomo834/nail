@@ -57,7 +57,6 @@ class AdminsImport implements ToCollection, WithStartRow
             ];
             
             Validator::make($data, $conditions)->validate();
-
             
             $p = str_random(12);
 
@@ -94,7 +93,16 @@ class AdminsImport implements ToCollection, WithStartRow
             }
 
             if ($row[1] != ""){
-                $re = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[1]);
+                $dateq = gettype($row[1]);
+
+                //excel
+                if ($dateq == "integer"){
+                    $re = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[1]);
+                    
+                //csv
+                }else{
+                    $re = $row[1];
+                }
             }else{
                 $re = $row[1];
             }
