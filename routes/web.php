@@ -65,6 +65,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('file-import-export', 'AdminExcelController@fileImportExport');
     Route::post('file-import', 'AdminExcelController@fileImport')->name('file-import');
     Route::get('file-export', 'AdminExcelController@fileExport')->name('file-export');
+    Route::get('file-csv-export', 'AdminExcelController@fileCSVExport')->name('file-csv-export');
 
     Route::get('file-allimports', 'AllAdminController@fileImport');
     Route::post('file-allimport', 'AllAdminController@fileAllImport'); 

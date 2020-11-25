@@ -37,5 +37,9 @@ class AdminExcelController extends Controller
     public function fileExport() 
     {
         return Storage::download('public/sample.xlsx');
+    } 
+    public function fileCSVExport() 
+    {
+        return Storage::download('public/sample.csv');
     }    
 }

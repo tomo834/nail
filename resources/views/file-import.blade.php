@@ -5,9 +5,6 @@
     <div class="row">
         <div class="col-12">
             <h2 class="mb-4">店舗インポート</h2>
-            <p>Excel,CSVフォーマット</p>
-
-
             @if (Auth::guard('admin')->user()->type === "99")
                 <p>※追加できるのは代理店のみです。特約店は代理店、加盟店は特約店からのみ登録できます。</p>
             @elseif (Auth::guard('admin')->user()->type === "1")
@@ -15,6 +12,13 @@
             @elseif (Auth::guard('admin')->user()->type === "2")
                 <p>※追加できるのは加盟店のみです。</p>
             @endif
+            <div class="d-flex mt-3 mb-1 align-items-center justify-content-between">
+                <p class="mb-0">ファイルフォーマット</p>
+                <div class="">
+                    <a class="btn btn-success" href="{{ url('admin/file-export') }}">サンプルEXCEL</a>
+                    <a class="btn btn-success ml-1" href="{{ url('admin/file-csv-export') }}">サンプルCSV</a>    
+                </div>
+            </div>
             <div class=" table-responsible">
                 <table class="table text-nowrap table-bordered">
                     <tr>
@@ -103,19 +107,18 @@
                 <div class="form-group mb-4" style="max-width: 500px; margin: 0 auto;">
                     <div class="custom-file text-left">
                         <input type="file" name="file" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label" for="customFile" id="cutomLabel">Choose file</label>
+                        <label class="custom-file-label" for="customFile" id="cutomLabel">ファイルを選択してください</label>
                     </div>
-                </div>
-                <div class="d-flex justify-content-center">
-                    @if (Auth::guard('admin')->user()->type === "99")
-                        <button class="btn btn-primary">代理店追加</button>
-                    @elseif (Auth::guard('admin')->user()->type === "1")
-                        <button class="btn btn-primary">特約店追加</button>
-                    @elseif (Auth::guard('admin')->user()->type === "2")
-                        <button class="btn btn-primary">加盟店追加</button>
-                    @endif
-                    
-                    <a class="btn btn-success" href="{{ url('admin/file-export') }}">サンプルダウンロード</a>
+                    <div class="text-center mt-2">
+                        @if (Auth::guard('admin')->user()->type === "99")
+                            <button class="btn btn-primary">代理店追加</button>
+                        @elseif (Auth::guard('admin')->user()->type === "1")
+                            <button class="btn btn-primary">特約店追加</button>
+                        @elseif (Auth::guard('admin')->user()->type === "2")
+                            <button class="btn btn-primary">加盟店追加</button>
+                        @endif
+                        
+                    </div>
                 </div>
             </form>
         </div>
