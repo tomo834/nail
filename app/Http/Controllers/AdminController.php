@@ -184,6 +184,59 @@ class AdminController extends Controller
         //
     }
 
+    public function editShop($id)
+    {
+        $admin = Admin::find($id);
+        return view('administor/edit_shop', compact("id", "admin"));
+    }
+
+    public function updateShop(Request $request, $id)
+    {
+
+        Log::debug($request);
+        $admin = Admin::find($id);
+
+        Log::debug("OK");
+
+        if ($request->notification_address == NULL) {
+            $notification_address = $request->email;
+        }else{
+            $notification_address = $request->notification_address;
+        }
+
+        $admin->notification_address = $notification_address;
+        $admin->request = $request->request_date;
+        $admin->company_name = $request->company_name;
+        $admin->representative = $request->representative;
+        $admin->zip_code = $request->zip_code;
+        $admin->address = $request->address;
+        $admin->cellphone = $request->cellphone;
+        $admin->phone = $request->phone;
+        $admin->shop_name = $request->shop_name;
+        $admin->shop_pic = $request->shop_pic;
+        $admin->shop_zip_code = $request->shop_zip_code;
+        $admin->shop_address = $request->shop_address;
+        $admin->shop_phone = $request->shop_phone;
+        $admin->shop_open = $request->shop_open;
+        $admin->has_nailist = $request->has_nailist;
+        $admin->homepage = $request->homepage;
+
+        $admin->account_holder = $request->account_holder;
+        $admin->bank_name = $request->bank_name;
+        $admin->branch_name = $request->branch_name;
+        $admin->bank_code = $request->bank_code;
+        $admin->branch_code = $request->branch_code;
+        $admin->account_type = $request->account_type;
+        $admin->account_number = $request->account_number;
+        $admin->historical_matters = $request->historical_matters;
+        $admin->passbook = $request->passbook;
+        $admin->other = $request->other;
+
+        $admin->update();
+
+        return view('administor.complete_register'); 
+    }
+
     public function editProfile()
     {
         $admin = Auth::guard('admin')->user();

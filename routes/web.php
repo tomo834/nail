@@ -54,6 +54,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('change-profile/edit', "AdminController@editProfile");
     Route::post('change-profile', "AdminController@updateProfile");
 
+    Route::get('change-profile/shop/{id}', "AdminController@editShop")->middleware('parent');
+    Route::post('change-shop/{id}', "AdminController@updateShop")->middleware('parent');
+
     Route::resource('user', "UserController");
     Route::resource('device', "DeviceController");
 

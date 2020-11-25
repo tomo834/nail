@@ -67,52 +67,53 @@
 					</tr>
 
 					@foreach ($nodes as $node)
+						
 					<tr>
-						<td>{{ $node->admin_info->account_id }}</td>
-						<td>
-							@if ($node->admin_info->type === "1")
-							    代理店
-							@elseif ($node->admin_info->type === "2")
-							    特約店
-							@elseif ($node->admin_info->type === "3")
-							    加盟店			
-							@elseif ($node->admin_info->type === "99")
-								運営
-							@endif
-						</td>
-						<td>{{ $node->admin_info->email}}</td>
-						<td>{{ $node->admin_info->notification_address}}</td>
-						<td>{{ $node->admin_info->company_name }}</td>
-						<td>{{ $node->admin_info->representative }}</td>
-						<td>{{ $node->admin_info->request }}</td>
-						<td>{{ $node->admin_info->zip_code }}</td>
-						<td>{{ $node->admin_info->address }}</td>
-						<td>{{ $node->admin_info->cellphone }}</td>
-						<td>{{ $node->admin_info->phone }}</td>
-						<td>{{ $node->admin_info->name }}</td>
-						<td>{{ $node->admin_info->shop_pic }}</td>
-						<td>{{ $node->admin_info->shop_zip_code }}</td>
-						<td>{{ $node->admin_info->shop_address }}</td>
-						<td>{{ $node->admin_info->shop_phone }}</td>
-						<td>{{ $node->admin_info->shop_open }}</td>
-						<td>{{ $node->admin_info->has_nailist }}</td>
-						<td>{{ $node->admin_info->homepage }}</td>
-						<td>{{ $node->admin_info->account_holder }}</td>
-						<td>{{ $node->admin_info->bank_name }}</td>
-						<td>{{ $node->admin_info->branch_name }}</td>
-						<td>{{ $node->admin_info->bank_code }}</td>
-						<td>{{ $node->admin_info->branch_code }}</td>
-						<td>{{ $node->admin_info->account_type }}</td>
-						<td>{{ $node->admin_info->account_number }}</td>
-						<td>{{ $node->admin_info->incentive }}%</td>
-						<td>{{ $node->admin_info->historical_matters }}</td>
-						<td>{{ $node->admin_info->passbook }}</td>
-						<td>{{ $node->admin_info->other }}</td>
+							<td><a href="{{ url('/admin/change-profile/edit') }}">{{ $node->admin_info->account_id }}</a></td>
+							<td>
+								@if ($node->admin_info->type === "1")
+								    代理店
+								@elseif ($node->admin_info->type === "2")
+								    特約店
+								@elseif ($node->admin_info->type === "3")
+								    加盟店			
+								@elseif ($node->admin_info->type === "99")
+									運営
+								@endif
+							</td>
+							<td>{{ $node->admin_info->email}}</td>
+							<td>{{ $node->admin_info->notification_address}}</td>
+							<td>{{ $node->admin_info->company_name }}</td>
+							<td>{{ $node->admin_info->representative }}</td>
+							<td>{{ $node->admin_info->request }}</td>
+							<td>{{ $node->admin_info->zip_code }}</td>
+							<td>{{ $node->admin_info->address }}</td>
+							<td>{{ $node->admin_info->cellphone }}</td>
+							<td>{{ $node->admin_info->phone }}</td>
+							<td>{{ $node->admin_info->name }}</td>
+							<td>{{ $node->admin_info->shop_pic }}</td>
+							<td>{{ $node->admin_info->shop_zip_code }}</td>
+							<td>{{ $node->admin_info->shop_address }}</td>
+							<td>{{ $node->admin_info->shop_phone }}</td>
+							<td>{{ $node->admin_info->shop_open }}</td>
+							<td>{{ $node->admin_info->has_nailist }}</td>
+							<td>{{ $node->admin_info->homepage }}</td>
+							<td>{{ $node->admin_info->account_holder }}</td>
+							<td>{{ $node->admin_info->bank_name }}</td>
+							<td>{{ $node->admin_info->branch_name }}</td>
+							<td>{{ $node->admin_info->bank_code }}</td>
+							<td>{{ $node->admin_info->branch_code }}</td>
+							<td>{{ $node->admin_info->account_type }}</td>
+							<td>{{ $node->admin_info->account_number }}</td>
+							<td>{{ $node->admin_info->incentive }}%</td>
+							<td>{{ $node->admin_info->historical_matters }}</td>
+							<td>{{ $node->admin_info->passbook }}</td>
+							<td>{{ $node->admin_info->other }}</td>
 					</tr>
 
 						@foreach ($node->children as $agency)
 						<tr>
-							<td>{{ $agency->admin_info->account_id }}</td>
+							<td><a href="{{ url('/admin/change-profile/shop', $agency->admin_info->id ) }}">{{ $agency->admin_info->account_id }}</a></td>
 							<td>
 								@if ($agency->admin_info->type === "1")
 								    代理店
@@ -155,7 +156,7 @@
 						</tr>
 							@foreach ($agency->children as $distributor)
 							<tr>
-								<td>{{ $distributor->admin_info->account_id }}</td>
+								<td><a href="{{ url('/admin/change-profile/shop', $distributor->admin_info->id ) }}">{{ $distributor->admin_info->account_id }}</a></td>
 								<td>
 									@if ($distributor->admin_info->type === "1")
 									    代理店
@@ -198,7 +199,7 @@
 							</tr>
 								@foreach ($distributor->children as $member)
 								<tr>
-									<td>{{ $member->admin_info->account_id }}</td>
+									<td><a href="{{ url('/admin/change-profile/shop', $member->admin_info->id ) }}">{{ $member->admin_info->account_id }}</a></td>
 									<td>
 										@if ($member->admin_info->type === "1")
 										    代理店
